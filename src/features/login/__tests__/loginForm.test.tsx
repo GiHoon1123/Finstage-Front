@@ -14,7 +14,7 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
-jest.mock("../hooks/useLogin", () => ({
+jest.mock("../model/useLogin", () => ({
   useLogin: () => mockLogin,
 }));
 
