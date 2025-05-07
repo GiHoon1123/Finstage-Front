@@ -71,6 +71,10 @@ export default function LivePriceChart() {
   }, []);
 
   return (
-    <div ref={chartContainerRef} style={{ width: "100%", height: "300px" }} />
+    <div
+      data-testid="chart-container"
+      ref={chartContainerRef}
+      style={{ width: "100%", height: "300px" }}
+    />
   );
 }
