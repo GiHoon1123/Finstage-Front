@@ -1,17 +1,18 @@
-/// features/viewCompanyFinance/ui/IncomeStatementTable.tsx
 "use client";
 
-import { useFilteredStatements } from "../model/useFilteredStatements";
-import { IncomeStatement } from "@/entities/incomeStatement";
+import {
+  IncomeStatement,
+  useIncomeStatementListStore,
+} from "@/entities/incomeStatement";
 import React from "react";
 
 export default function IncomeStatementTable() {
-  const statements = useFilteredStatements();
+  const { incomeStatementList } = useIncomeStatementListStore();
 
-  if (!statements || statements.length === 0) return <p>No data available.</p>;
+  if (incomeStatementList.length === 0) return <p>No data available.</p>;
 
   // 연도별로 그룹핑
-  const grouped = statements.reduce((acc, item) => {
+  const grouped = incomeStatementList.reduce((acc, item) => {
     const year = item.date.split("-")[0];
     if (!acc[year]) acc[year] = [];
     acc[year].push(item);

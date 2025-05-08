@@ -1,6 +1,28 @@
 /* eslint-disable */
 const { faker } = require("@faker-js/faker");
 
+function generateMockIncomeStatements(symbol, count) {
+  return Array.from({ length: count }).map((_, idx) => {
+    const revenue = faker.number.int({ min: 100000000, max: 1000000000 });
+    const cost = faker.number.int({ min: 40000000, max: revenue - 100000 });
+    const gross = revenue - cost;
+    const operating = faker.number.int({ min: gross * 0.4, max: gross });
+    const net = faker.number.int({ min: operating * 0.6, max: operating });
+
+    return {
+      symbol,
+      id: idx + 1,
+      date: faker.date.past({ years: 5 }).toISOString().split("T")[0],
+      revenue,
+      cost_of_revenue: cost,
+      gross_profit: gross,
+      operating_income: operating,
+      net_income: net,
+      eps: faker.number.float({ min: 0.1, max: 10, precision: 0.01 }),
+    };
+  });
+}
+
 function generateMockSymbols(count) {
   return Array.from({ length: count }, () => {
     const symbol =
@@ -28,4 +50,4 @@ function generateMockSymbols(count) {
   });
 }
 
-module.exports = { generateMockSymbols };
+module.exports = { generateMockIncomeStatements, generateMockSymbols };

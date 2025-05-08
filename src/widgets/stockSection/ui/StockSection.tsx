@@ -1,4 +1,4 @@
-import { LivePriceChart } from "@/entities/price";
+// import { LivePriceChart } from "@/entities/price";
 import {
   IncomeStatementTable,
   CompanySearchInput,
@@ -8,7 +8,7 @@ export default function StockSection() {
   return (
     <section>
       <CompanySearchInput />
-      <LivePriceChart />
+      {/* <LivePriceChart /> */}
       <IncomeStatementTable />
     </section>
   );
