@@ -1,22 +1,22 @@
 "use client";
 
+import { fetchSymbolListToStore } from "../api/fetchSymbolList";
 import { useSelectedCompany } from "../model/useSelectedCompany";
-import { useState } from "react";
-
-const dummyCompanyList = [
-  { symbol: "GOOGL", name: "구글" },
-  { symbol: "005930", name: "삼성전자" },
-  { symbol: "000660", name: "SK하이닉스" },
-];
+import { useSymbolListStore } from "@/entities/symbol";
+import { useState, useEffect } from "react";
 
 export default function CompanySearchInput() {
   const { setSelectedCompanyId } = useSelectedCompany();
+  const { symbolList } = useSymbolListStore();
   const [query, setQuery] = useState("");
 
-  const filtered = dummyCompanyList.filter(
-    (c) =>
-      c.name.toLowerCase().includes(query.toLowerCase()) ||
-      c.symbol.toLowerCase().includes(query.toLowerCase()),
+  useEffect(() => {
+    if (symbolList?.length === 0 || symbolList === null)
+      fetchSymbolListToStore();
+  }, [symbolList]);
+
+  const filtered = symbolList.filter(
+    (c) => c.name.includes(query) || c.symbol.includes(query),
   );
 
   return (
