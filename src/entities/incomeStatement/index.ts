@@ -1,4 +1,4 @@
-export type { IncomeStatement, IncomeStatementList } from "./types";
+export type { IncomeStatement } from "./types";
 export { useIncomeStatementStore } from "./model/useIncomeStatementStore";
 export { useIncomeStatementListStore } from "./model/useIncomeStatementListStore";
 export { default as IncomeRevenue } from "./ui/IncomeRevenue";

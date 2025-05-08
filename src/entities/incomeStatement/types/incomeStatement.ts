@@ -9,7 +9,3 @@ export interface IncomeStatement {
   operating_income: number;
   eps: number;
 }
-
-export interface IncomeStatementList {
-  income_statement: IncomeStatement[];
-}

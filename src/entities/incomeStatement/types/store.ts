@@ -1,4 +1,4 @@
-import { IncomeStatement, IncomeStatementList } from "../types";
+import { IncomeStatement } from "../types";
 
 export interface IncomeStatementState {
   incomeStatement: IncomeStatement | null;
@@ -7,7 +7,7 @@ export interface IncomeStatementState {
 }
 
 export interface IncomeStatementListState {
-  incomeStatementList: IncomeStatementList | null;
-  setIncomeStatementList: (incomeList: IncomeStatementList) => void;
+  incomeStatementList: IncomeStatement[] | null;
+  setIncomeStatementList: (incomeList: IncomeStatement[]) => void;
   clearIncomeStatementList: () => void;
 }

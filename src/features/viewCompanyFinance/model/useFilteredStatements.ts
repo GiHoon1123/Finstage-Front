@@ -7,8 +7,6 @@ export function useFilteredStatements() {
 
   if (!selectedCompanyId || !incomeStatementList) return [];
   else {
-    return incomeStatementList.income_statement.filter(
-      (s) => s.symbol === selectedCompanyId,
-    );
+    return incomeStatementList.filter((s) => s.symbol === selectedCompanyId);
   }
 }
