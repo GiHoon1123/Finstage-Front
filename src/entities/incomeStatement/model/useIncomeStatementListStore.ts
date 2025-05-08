@@ -3,9 +3,9 @@ import type { IncomeStatementListState } from "../types";
 
 export const useIncomeStatementListStore = create<IncomeStatementListState>(
   (set) => ({
-    incomeStatementList: null,
+    incomeStatementList: [],
     setIncomeStatementList: (incomeList) =>
       set({ incomeStatementList: incomeList }),
-    clearIncomeStatementList: () => set({ incomeStatementList: null }),
+    clearIncomeStatementList: () => set({ incomeStatementList: [] }),
   }),
 );

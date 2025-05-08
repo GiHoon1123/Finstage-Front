@@ -1,13 +1,13 @@
 import { IncomeStatement } from "../types";
 
 export interface IncomeStatementState {
-  incomeStatement: IncomeStatement | null;
+  currentIncomeStatement: IncomeStatement | null;
   setIncomeStatement: (income: IncomeStatement) => void;
   clearIncomeStatement: () => void;
 }
 
 export interface IncomeStatementListState {
-  incomeStatementList: IncomeStatement[] | null;
+  incomeStatementList: IncomeStatement[];
   setIncomeStatementList: (incomeList: IncomeStatement[]) => void;
   clearIncomeStatementList: () => void;
 }
