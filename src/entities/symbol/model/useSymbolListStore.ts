@@ -2,7 +2,7 @@ import { create } from "zustand";
 import type { SymbolListState } from "../types";
 
 export const useSymbolListStore = create<SymbolListState>((set) => ({
-  symbolList: null,
+  symbolList: [],
   setSymbolList: (symbol) => set({ symbolList: symbol }),
-  clearSymbolList: () => set({ symbolList: null }),
+  clearSymbolList: () => set({ symbolList: [] }),
 }));
