@@ -11,12 +11,13 @@ export default function CompanySearchInput() {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    if (symbolList?.length === 0 || symbolList === null)
-      fetchSymbolListToStore();
+    if (symbolList.length === 0) fetchSymbolListToStore();
   }, [symbolList]);
 
   const filtered = symbolList.filter(
-    (c) => c.name.includes(query) || c.symbol.includes(query),
+    (c) =>
+      c.name.toLowerCase().includes(query.toLowerCase()) ||
+      c.symbol.toLowerCase().includes(query.toLowerCase()),
   );
 
   return (
