@@ -7,7 +7,7 @@ export interface SymbolState {
 }
 
 export interface SymbolListState {
-  symbolList: Symbol[] | null;
+  symbolList: Symbol[];
   setSymbolList: (symbolList: Symbol[]) => void;
   clearSymbolList: () => void;
 }
