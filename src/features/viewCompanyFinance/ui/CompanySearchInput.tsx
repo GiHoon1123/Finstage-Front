@@ -4,10 +4,11 @@
 import { fetchIncomeStatementListToStore } from "../api/fetchIncomeStatementList";
 import { fetchSymbolListToStore } from "../api/fetchSymbolList";
 import { useSelectedCompany } from "../model/useSelectedCompany";
-import { useSymbolListStore } from "@/entities/symbol";
+import { useSymbolListStore, useRecentSymbolStore } from "@/entities/symbol";
 import { useState, useEffect } from "react";
 
 export default function CompanySearchInput() {
+  const { recentSymbols, addRecentSymbol } = useRecentSymbolStore();
   const { setSelectedCompanyId } = useSelectedCompany();
   const { symbolList } = useSymbolListStore();
 
@@ -15,19 +16,18 @@ export default function CompanySearchInput() {
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [loading, setLoading] = useState(false);
 
+  const filtered = symbolList.filter(
+    (symbolItem) =>
+      symbolItem.name.toLowerCase().includes(query.toLowerCase()) ||
+      symbolItem.symbol.toLowerCase().includes(query.toLowerCase()),
+  );
+
   useEffect(() => {
     if (symbolList.length === 0) fetchSymbolListToStore();
   }, []);
 
-  const filtered = symbolList.filter(
-    (c) =>
-      c.name.toLowerCase().includes(query.toLowerCase()) ||
-      c.symbol.toLowerCase().includes(query.toLowerCase()),
-  );
-
   const handleConfirm = async (display: string | null = null) => {
-    const selectedSymbol = filtered[selectedIndex]?.symbol ?? null;
-    let symbol = selectedSymbol ?? "";
+    let symbol = filtered[selectedIndex]?.symbol ?? "";
     const queryStr = display ?? query;
 
     // 1. selectedSymbol이 없다면 query 기반으로 추출 시도
@@ -42,9 +42,9 @@ export default function CompanySearchInput() {
 
       // symbolList에서 symbol 또는 name 기준으로 검색
       const found = symbolList.find(
-        (item) =>
-          item.symbol.toUpperCase() === typedSymbol ||
-          item.name.toLowerCase().includes(queryStr.toLowerCase()),
+        (symbolItem) =>
+          symbolItem.symbol.toUpperCase() === typedSymbol ||
+          symbolItem.name.toLowerCase().includes(queryStr.toLowerCase()),
       );
 
       if (!found) {
@@ -56,6 +56,7 @@ export default function CompanySearchInput() {
     }
 
     setSelectedCompanyId(symbol);
+    addRecentSymbol(symbol);
     setLoading(true);
     await fetchIncomeStatementListToStore(symbol);
     setLoading(false);
@@ -84,9 +85,39 @@ export default function CompanySearchInput() {
     handleConfirm(display);
   };
 
+  const handleRecentClick = (symbol: string) => {
+    const found = symbolList.find((symbolItem) => symbolItem.symbol === symbol);
+
+    if (found) {
+      const display = `${found.name} (${found.symbol})`;
+      const findFilteredIndex = filtered.findIndex(
+        (symbolItem) => symbolItem.symbol === symbol,
+      );
+      setQuery(display);
+      setSelectedIndex(findFilteredIndex);
+      handleConfirm(display);
+    }
+  };
+
   return (
     <div className="mb-4">
       {loading ? "조회 중..." : ""}
+      {recentSymbols.length > 0 && (
+        <div className="recent-container">
+          <p className="recent-title">최근 검색:</p>
+          <ul className="recent-list">
+            {recentSymbols.map((symbol) => (
+              <li
+                key={symbol}
+                className="recent-item"
+                onClick={() => handleRecentClick(symbol)}
+              >
+                {symbol}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className="flex gap-2 items-center">
         <input
           type="text"
@@ -102,11 +133,11 @@ export default function CompanySearchInput() {
       </div>
       {query && filtered.length > 0 && (
         <ul className="border mt-1 text-sm bg-white max-h-40 overflow-y-auto">
-          {filtered.map((c, idx) => {
-            const display = `${c.name} (${c.symbol})`;
+          {filtered.map((symbolItem, idx) => {
+            const display = `${symbolItem.name} (${symbolItem.symbol})`;
             return (
               <li
-                key={c.symbol}
+                key={symbolItem.symbol}
                 className={`px-2 py-1 cursor-pointer ${
                   idx === selectedIndex
                     ? "bg-blue-100 font-semibold"

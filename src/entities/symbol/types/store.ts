@@ -11,3 +11,8 @@ export interface SymbolListState {
   setSymbolList: (symbolList: Symbol[]) => void;
   clearSymbolList: () => void;
 }
+
+export interface RecentSymbolState {
+  recentSymbols: string[];
+  addRecentSymbol: (symbol: string) => void;
+}

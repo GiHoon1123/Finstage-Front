@@ -1,0 +1,29 @@
+.recent-container {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.recent-title {
+  font-weight: 600;
+  color: #4b5563; /* text-gray-600 */
+}
+
+.recent-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.recent-item {
+  padding: 0.25rem 0.5rem;
+  background-color: #f3f4f6; /* bg-gray-100 */
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: background-color 0.2s;
+}
+
+.recent-item:hover {
+  background-color: #e5e7eb; /* hover:bg-gray-200 */
+}
