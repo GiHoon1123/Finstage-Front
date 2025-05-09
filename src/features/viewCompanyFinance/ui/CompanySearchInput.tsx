@@ -26,6 +26,17 @@ export default function CompanySearchInput() {
     if (symbolList.length === 0) fetchSymbolListToStore();
   }, []);
 
+  useEffect(() => {
+    // filtered가 새로 갱신됐고, 사용자가 선택한 게 없다면만 초기화
+    if (filtered.length > 0 && selectedIndex === -1) {
+      setSelectedIndex(0);
+    }
+
+    if (filtered.length === 0) {
+      setSelectedIndex(-1);
+    }
+  }, [filtered, selectedIndex]);
+
   const handleConfirm = async (display: string | null = null) => {
     let symbol = filtered[selectedIndex]?.symbol ?? "";
     const queryStr = display ?? query;
