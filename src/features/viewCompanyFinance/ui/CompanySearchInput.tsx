@@ -25,12 +25,36 @@ export default function CompanySearchInput() {
       c.symbol.toLowerCase().includes(query.toLowerCase()),
   );
 
-  const selectedSymbol = filtered[selectedIndex]?.symbol ?? null;
+  const handleConfirm = async (display: string | null = null) => {
+    const selectedSymbol = filtered[selectedIndex]?.symbol ?? null;
+    let symbol = selectedSymbol ?? "";
+    const queryStr = display ?? query;
 
-  const handleConfirm = async () => {
-    const symbol = selectedSymbol || query.trim();
-    if (!symbol) return;
-    console.log("symbol", symbol);
+    // 1. selectedSymbol이 없다면 query 기반으로 추출 시도
+    if (!symbol) {
+      const match = queryStr.match(/\(([^)]+)\)$/);
+      let typedSymbol = match?.[1].trim() ?? "";
+
+      // 괄호에서 추출 못했을 경우 → 전체 query를 symbol로 시도
+      if (!typedSymbol) {
+        typedSymbol = queryStr.trim().toUpperCase();
+      }
+
+      // symbolList에서 symbol 또는 name 기준으로 검색
+      const found = symbolList.find(
+        (item) =>
+          item.symbol.toUpperCase() === typedSymbol ||
+          item.name.toLowerCase().includes(queryStr.toLowerCase()),
+      );
+
+      if (!found) {
+        alert("정확한 회사를 선택하거나 입력해 주세요.");
+        return;
+      }
+
+      symbol = found.symbol;
+    }
+
     setSelectedCompanyId(symbol);
     setLoading(true);
     await fetchIncomeStatementListToStore(symbol);
@@ -57,10 +81,12 @@ export default function CompanySearchInput() {
   const handleItemClick = (display: string, index: number) => {
     setQuery(display);
     setSelectedIndex(index);
+    handleConfirm(display);
   };
 
   return (
     <div className="mb-4">
+      {loading ? "조회 중..." : ""}
       <div className="flex gap-2 items-center">
         <input
           type="text"
@@ -73,12 +99,6 @@ export default function CompanySearchInput() {
           }}
           onKeyDown={handleKeyDown}
         />
-        <button
-          className="px-4 py-1 text-sm bg-blue-500 text-white rounded"
-          onClick={handleConfirm}
-        >
-          {loading ? "조회 중..." : "확인"}
-        </button>
       </div>
       {query && filtered.length > 0 && (
         <ul className="border mt-1 text-sm bg-white max-h-40 overflow-y-auto">
