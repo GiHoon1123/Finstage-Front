@@ -27,3 +27,10 @@
 .recent-item:hover {
   background-color: #e5e7eb; /* hover:bg-gray-200 */
 }
+
+.fallback-text {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280; /* text-gray-500 */
+  padding: 0 0.5rem;
+}
