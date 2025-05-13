@@ -1,4 +1,3 @@
-// src/features/viewCompanyFinance/model/useCompanySearch.ts
 import { useState, useRef, RefObject } from "react";
 import { useRecentSymbolStore } from "@/entities/symbol";
 import { useFilteredSymbols } from "./useFilteredSymbols";
