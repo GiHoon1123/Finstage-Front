@@ -1,0 +1,62 @@
+.table-wrapper {
+  overflow-x: auto;
+  background-color: #1a1b1e; /* 테이블 배경 */
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.income-table {
+  min-width: 640px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.year-header {
+  background-color: #161718;
+  padding: 8px 16px;
+  text-align: center;
+  font-weight: 400;
+  color: #f1f3f5;
+}
+
+.sticky-label {
+  position: sticky;
+  left: 0;
+  background-color: #1a1b1e;
+  z-index: 10;
+  color: #f1f3f5;
+}
+
+.row-label {
+  padding: 8px 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.value-cell {
+  padding: 8px 16px;
+  text-align: right;
+  white-space: nowrap;
+  color: #f1f3f5;
+}
+
+.value-cell.neutral {
+  color: #cbd5e1;
+}
+
+.value-cell.positive {
+  color: #ef5350; /* 빨간색 */
+}
+
+.value-cell.negative {
+  color: #42a5f5; /* 파란색 */
+}
+
+tbody tr:hover {
+  background-color: #2a2b2e;
+}
+
+.no-data {
+  color: #888;
+  padding: 16px;
+}

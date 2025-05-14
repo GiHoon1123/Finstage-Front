@@ -9,9 +9,9 @@ import React from "react";
 export default function IncomeStatementTable() {
   const { incomeStatementList } = useIncomeStatementListStore();
 
-  if (incomeStatementList.length === 0) return <p>No data available.</p>;
+  if (incomeStatementList.length === 0)
+    return <p className="no-data">데이터가 없습니다.</p>;
 
-  // 연도별로 그룹핑
   const grouped = incomeStatementList.reduce((acc, item) => {
     const year = item.date.split("-")[0];
     if (!acc[year]) acc[year] = [];
@@ -19,61 +19,74 @@ export default function IncomeStatementTable() {
     return acc;
   }, {} as Record<string, IncomeStatement[]>);
 
+  const years = Object.keys(grouped).sort();
+
+  const rows: {
+    label: string;
+    getValue: (d: IncomeStatement) => number | string;
+  }[] = [
+    { label: "매출액", getValue: (d) => d.revenue },
+    { label: "매출원가", getValue: (d) => d.cost_of_revenue },
+    { label: "매출총이익", getValue: (d) => d.gross_profit },
+    { label: "영업이익", getValue: (d) => d.operating_income },
+    {
+      label: "영업이익률",
+      getValue: (d) =>
+        ((d.operating_income / d.revenue) * 100).toFixed(1) + "%",
+    },
+    { label: "순이익", getValue: (d) => d.net_income },
+    {
+      label: "순이익률",
+      getValue: (d) => ((d.net_income / d.revenue) * 100).toFixed(1) + "%",
+    },
+    { label: "주당순이익(EPS)", getValue: (d) => d.eps.toFixed(2) },
+  ];
+
   return (
-    <table className="w-full border border-gray-300 text-sm">
-      <thead className="bg-gray-100">
-        <tr>
-          <th className="border p-2">Date</th>
-          <th className="border p-2">Revenue</th>
-          <th className="border p-2">Cost of Revenue</th>
-          <th className="border p-2">Gross Profit</th>
-          <th className="border p-2">Operating Margin</th>
-          <th className="border p-2">Net Margin</th>
-          <th className="border p-2">EPS</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.entries(grouped).map(([year, rows]) => (
-          <React.Fragment key={year}>
-            <tr className="bg-gray-100">
-              <td colSpan={7} className="text-left px-2 py-1 font-bold text-sm">
-                📅 {year}
-              </td>
-            </tr>
-            {rows.map((s) => (
-              <tr key={s.id} className="hover:bg-gray-50">
-                <td className="border p-2">{s.date}</td>
-                <td className="border p-2 text-right">
-                  {s.revenue.toLocaleString()}
-                </td>
-                <td className="border p-2 text-right">
-                  {s.cost_of_revenue.toLocaleString()}
-                </td>
-                <td className="border p-2 text-right">
-                  {s.gross_profit.toLocaleString()}
-                </td>
-                <td
-                  className={`border p-2 text-right ${
-                    s.operating_income > 0 ? "text-green-600" : "text-red-600"
-                  }`}
-                >
-                  {((s.operating_income / s.revenue) * 100).toFixed(1)}%
-                </td>
-                <td
-                  className={`border p-2 text-right ${
-                    s.net_income > 0 ? "text-green-600" : "text-red-600"
-                  }`}
-                >
-                  {((s.net_income / s.revenue) * 100).toFixed(1)}%
-                </td>
-                <td className="border p-2 text-gray-500 text-xs text-right">
-                  {s.eps.toFixed(2)}
-                </td>
-              </tr>
+    <div className="table-wrapper">
+      <table className="income-table">
+        <thead>
+          <tr>
+            <th className="sticky-label">항목</th>
+            {years.map((year) => (
+              <th key={year} className="year-header">
+                {year}
+              </th>
             ))}
-          </React.Fragment>
-        ))}
-      </tbody>
-    </table>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.label}>
+              <td className="sticky-label row-label">{row.label}</td>
+              {years.map((year) => {
+                const data = grouped[year]?.[0];
+                const raw = data ? row.getValue(data) : "-";
+
+                const num =
+                  typeof raw === "string" ? parseFloat(raw) : Number(raw);
+                const isPositive = num > 0;
+                const isNegative = num < 0;
+
+                return (
+                  <td
+                    key={year + row.label}
+                    className={`value-cell ${
+                      isPositive
+                        ? "positive"
+                        : isNegative
+                        ? "negative"
+                        : "neutral"
+                    }`}
+                  >
+                    {typeof raw === "number" ? raw.toLocaleString() : raw}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
