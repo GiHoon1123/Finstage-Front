@@ -1,6 +1,6 @@
 import type { CompanySearchFieldProps } from "../types";
 
-export default function CompanySearchField({
+export default function SymbolSearchField({
   query,
   setQuery,
   onKeyDown,

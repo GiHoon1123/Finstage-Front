@@ -1,1 +1,1 @@
-export { default as StockSection } from "./ui/StockSection";
+export { default as StockAnalyticSection } from "./ui/StockAnalyticSection";

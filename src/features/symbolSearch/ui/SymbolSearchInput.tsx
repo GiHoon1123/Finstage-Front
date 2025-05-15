@@ -1,11 +1,11 @@
 "use client";
 
 import { useCompanySearch } from "../model/useCompanySearch";
-import CompanySearchField from "./CompanySearchField";
-import CompanySearchRecentList from "./CompanySearchRecentList";
-import CompanySearchResultList from "./CompanySearchResultList";
+import SymbolSearchField from "./SymbolSearchField";
+import SymbolSearchRecentList from "./SymbolSearchRecentList";
+import SymbolSearchResultList from "./SymbolSearchResultList";
 
-export default function CompanySearchInput() {
+export default function SymbolSearchInput() {
   const {
     query,
     setQuery,
@@ -24,12 +24,12 @@ export default function CompanySearchInput() {
     <div className="mb-4">
       {loading && "조회 중..."}
 
-      <CompanySearchRecentList
+      <SymbolSearchRecentList
         recentSymbols={recentSymbols}
         onClick={handleRecentClick}
       />
 
-      <CompanySearchField
+      <SymbolSearchField
         query={query}
         setQuery={setQuery}
         onKeyDown={handleKeyDown}
@@ -37,7 +37,7 @@ export default function CompanySearchInput() {
       />
 
       {query && (
-        <CompanySearchResultList
+        <SymbolSearchResultList
           filtered={filtered}
           selectedIndex={selectedIndex}
           selectedItemRef={selectedItemRef}

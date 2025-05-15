@@ -1,4 +1,4 @@
-.home-container {
+.basic-container {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -7,22 +7,22 @@
   margin: 0 auto;
 }
 
-.home-search-box {
+.basic-search-box {
   background-color: #1d1e20;
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
-.home-result-section {
+.basic-result-section {
   background-color: #1a1b1e;
   padding: 24px;
   border-radius: 12px;
   overflow-x: auto;
 }
 
-.home-search-box,
-.home-result-section {
+.basic-search-box,
+.basic-result-section {
   background-color: #1d1e20;
   padding: 24px;
   border-radius: 12px;

@@ -1,6 +1,6 @@
 import { CompanySearchResultListProps } from "../types";
 
-export default function CompanySearchResultList({
+export default function SymbolSearchResultList({
   filtered,
   selectedIndex,
   selectedItemRef,

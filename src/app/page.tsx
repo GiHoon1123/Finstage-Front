@@ -1,16 +1,14 @@
-import CompanySearchInput from "@/features/viewCompanyFinance/ui/CompanySearchInput";
-import IncomeStatementTable from "@/features/viewCompanyFinance/ui/IncomeStatementTable";
+import { SymbolSearchInput } from "@/features/symbolSearch";
+import { IncomeStatementTable } from "@/features/stockAnalytic";
 
 export default function HomePage() {
   return (
-    <div className="home-container">
-      {/* 검색 영역 */}
-      <div className="home-search-box">
-        <CompanySearchInput />
+    <div className="basic-container">
+      <div className="basic-search-box">
+        <SymbolSearchInput />
       </div>
 
-      {/* 테이블 결과 */}
-      <div className="home-result-section">
+      <div className="basic-result-section">
         <IncomeStatementTable />
       </div>
 
