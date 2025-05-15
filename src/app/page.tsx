@@ -1,5 +1,5 @@
 import { SymbolSearchInput } from "@/features/symbolSearch";
-import { IncomeStatementTable } from "@/features/stockAnalytic";
+import { StockAnalyticTable } from "@/features/stockAnalytic";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
       </div>
 
       <div className="basic-result-section">
-        <IncomeStatementTable />
+        <StockAnalyticTable />
       </div>
 
       {/* 추후: 인기 종목, 차트, 뉴스 위젯 등 추가 가능 */}

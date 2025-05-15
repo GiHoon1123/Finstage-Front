@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useIncomeStatementListStore } from "@/entities/incomeStatement";
-import { groupByViewMode } from "./useGroupedIncomeStatement";
-import { sortGroupedKeys } from "./useSortedColumns";
-import { useIncomeStatementRows } from "./useIncomeStatementRows";
+import { groupByViewMode } from "../lib/groupedIncomeStatement";
+import { getSortedKeys } from "../lib/sortedColumns";
+import { useIncomeStatementRows } from "../lib/incomeStatementRows";
 import type { ViewMode, SortOrder } from "../types";
 
-export function useIncomeStatementTable() {
+export function useStockAnalyticTable() {
   const { incomeStatementList } = useIncomeStatementListStore();
   const [viewMode, setViewMode] = useState<ViewMode>("annual");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
 
   const grouped = groupByViewMode(incomeStatementList, viewMode);
-  const columns = sortGroupedKeys(Object.keys(grouped), viewMode, sortOrder);
+  const columns = getSortedKeys(grouped, sortOrder);
   const rows = useIncomeStatementRows();
 
   return {

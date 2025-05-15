@@ -1,5 +1,5 @@
 import { SymbolSearchInput } from "@/features/symbolSearch";
-import { IncomeStatementTable } from "@/features/stockAnalytic";
+import { StockAnalyticTable } from "@/features/stockAnalytic";
 
 export default function StockAnalyticSection() {
   return (
@@ -10,7 +10,7 @@ export default function StockAnalyticSection() {
         </div>
 
         <div className="basic-result-section">
-          <IncomeStatementTable />
+          <StockAnalyticTable />
         </div>
       </div>
     </section>

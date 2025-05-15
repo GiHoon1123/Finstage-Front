@@ -1,4 +1,5 @@
-import type { Symbol } from "@/entities/symbol";
+import { IncomeStatement } from "@/entities/incomeStatement";
+import type { ViewMode, SortOrder } from "./index";
 
 export interface CompanySearchFieldProps {
   query: string;
@@ -7,14 +8,18 @@ export interface CompanySearchFieldProps {
   clearSelection: () => void;
 }
 
-export interface CompanySearchResultListProps {
-  filtered: Symbol[];
-  selectedIndex: number;
-  selectedItemRef: React.RefObject<HTMLLIElement | null>;
-  onClick: (display: string, index: number) => void;
+export interface IncomeTableHeaderProps {
+  viewMode: ViewMode;
+  setViewMode: (mode: ViewMode) => void;
+  sortOrder: SortOrder;
+  setSortOrder: (order: SortOrder) => void;
 }
 
-export interface CompanySearchRecentListProps {
-  recentSymbols: string[];
-  onClick: (symbol: string) => void;
+export interface IncomeTableBodyProps {
+  columns: string[];
+  grouped: Record<string, IncomeStatement[]>;
+  rows: {
+    label: string;
+    getValue: (list: IncomeStatement[]) => number | string;
+  }[];
 }

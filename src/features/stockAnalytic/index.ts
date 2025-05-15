@@ -1,1 +1,1 @@
-export { default as IncomeStatementTable } from "./ui/IncomeStatementTable";
+export { default as StockAnalyticTable } from "./ui/StockAnalyticTable";
