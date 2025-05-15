@@ -1,10 +1,8 @@
-import { useEffect } from "react";
 import { fetchSymbolListToStore } from "../api/fetchSymbolListToStore";
-import { useSymbolListStore } from "@/entities/symbol";
+import { Symbol } from "@/entities/symbol";
+import { useEffect } from "react";
 
-export function useSymbolFetchEffect() {
-  const { symbolList } = useSymbolListStore();
-
+export function useSymbolFetchEffect(symbolList: Symbol[]) {
   useEffect(() => {
     if (symbolList.length === 0) {
       fetchSymbolListToStore();

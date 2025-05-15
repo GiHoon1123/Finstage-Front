@@ -1,12 +1,13 @@
 import { useState, useRef, RefObject } from "react";
-import { useRecentSymbolStore } from "@/entities/symbol";
-import { useFilteredSymbols } from "./useFilteredSymbols";
+import { useSymbolListStore, useRecentSymbolStore } from "@/entities/symbol";
+import { filterSymbolsByQuery } from "../lib/filterSymbolsByQuery";
 import { useSymbolFetchEffect } from "./useSymbolFetchEffect";
 import { useSelectionLogic } from "./useSelectionLogic";
 import { useAutoScrollEffect } from "./useAutoScrollEffect";
 import { useConfirmHandler } from "./useConfirmHandler";
+import { findSymbolDisplayAndIndex } from "../lib/findSymbolDisplayAndIndex";
 
-export function useCompanySearch() {
+export function useSymbolSearch() {
   // 입력 상태 및 로딩 상태
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -14,23 +15,23 @@ export function useCompanySearch() {
   // 최근 검색 목록
   const { recentSymbols } = useRecentSymbolStore();
 
-  // 필터된 symbol 목록 계산
-  const { filtered, symbolList } = useFilteredSymbols(query);
+  // symbol 목록 및 필터된 목록
+  const { symbolList } = useSymbolListStore();
+  const { filtered } = filterSymbolsByQuery(symbolList, query);
 
   // 선택 인덱스 관리
   const { selectedIndex, setSelectedIndex } = useSelectionLogic(filtered);
 
   // 리스트 항목 자동 스크롤
   const selectedItemRef = useRef<HTMLLIElement | null>(null);
-  useAutoScrollEffect(selectedItemRef as RefObject<HTMLElement>, [
-    selectedIndex,
-  ]);
+  useAutoScrollEffect(selectedItemRef as RefObject<HTMLElement>, selectedIndex);
 
   // 초기 symbolList 요청
-  useSymbolFetchEffect();
+  useSymbolFetchEffect(symbolList);
 
   // 확인 핸들러
   const { handleConfirm } = useConfirmHandler(
+    symbolList,
     filtered,
     selectedIndex,
     setLoading,
@@ -63,14 +64,11 @@ export function useCompanySearch() {
 
   // 최근 검색 클릭
   const handleRecentClick = (symbol: string) => {
-    const found = symbolList.find((item) => item.symbol === symbol);
-    if (!found) return;
-
-    const display = `${found.name} (${found.symbol})`;
-    const index = filtered.findIndex((item) => item.symbol === symbol);
-    setQuery(display);
-    setSelectedIndex(index);
-    handleConfirm(display);
+    const result = findSymbolDisplayAndIndex(symbolList, filtered, symbol);
+    if (!result) return;
+    setQuery(result.display);
+    setSelectedIndex(result.index);
+    handleConfirm(result.display);
   };
 
   return {

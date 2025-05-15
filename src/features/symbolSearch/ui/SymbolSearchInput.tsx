@@ -1,6 +1,6 @@
 "use client";
 
-import { useCompanySearch } from "../model/useCompanySearch";
+import { useSymbolSearch } from "../model/useSymbolSearch";
 import SymbolSearchField from "./SymbolSearchField";
 import SymbolSearchRecentList from "./SymbolSearchRecentList";
 import SymbolSearchResultList from "./SymbolSearchResultList";
@@ -18,7 +18,7 @@ export default function SymbolSearchInput() {
     handleKeyDown,
     handleItemClick,
     handleRecentClick,
-  } = useCompanySearch();
+  } = useSymbolSearch();
 
   return (
     <div className="mb-4">

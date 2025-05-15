@@ -1,12 +1,12 @@
-import { useEffect, RefObject, DependencyList } from "react";
+import { useEffect, RefObject } from "react";
 
 export function useAutoScrollEffect(
   ref: RefObject<HTMLElement | null>,
-  deps: DependencyList,
+  active: number,
 ) {
   useEffect(() => {
     if (ref.current) {
       ref.current.scrollIntoView({ block: "nearest" });
     }
-  }, deps);
+  }, [active, ref]);
 }
