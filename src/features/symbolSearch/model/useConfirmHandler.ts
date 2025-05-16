@@ -2,6 +2,7 @@ import { fetchIncomeStatementListToStore } from "../api/fetchIncomeStatementList
 import { extractSymbolFromQuery } from "../lib/extractSymbolFromQuery";
 import { useRecentSymbolStore } from "@/entities/symbol";
 import type { Symbol } from "@/entities/symbol";
+import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
 export function useConfirmHandler(
@@ -10,6 +11,7 @@ export function useConfirmHandler(
   selectedIndex: number,
   setLoading: (v: boolean) => void,
 ) {
+  const router = useRouter();
   const { addRecentSymbol } = useRecentSymbolStore();
 
   const handleConfirm = useCallback(
@@ -26,6 +28,7 @@ export function useConfirmHandler(
       setLoading(true);
       await fetchIncomeStatementListToStore(symbol);
       setLoading(false);
+      router.push(`/stocks/${symbol}/analytics`);
     },
     [filtered, selectedIndex, symbolList],
   );
