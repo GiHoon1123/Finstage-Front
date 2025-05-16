@@ -9,6 +9,7 @@ export function useConfirmHandler(
   symbolList: Symbol[],
   filtered: Symbol[],
   selectedIndex: number,
+  setFocused: (v: boolean) => void,
   setLoading: (v: boolean) => void,
 ) {
   const router = useRouter();
@@ -28,6 +29,7 @@ export function useConfirmHandler(
       setLoading(true);
       await fetchIncomeStatementListToStore(symbol);
       setLoading(false);
+      setFocused(false);
       router.push(`/stocks/${symbol}/analytics`);
     },
     [filtered, selectedIndex, symbolList],

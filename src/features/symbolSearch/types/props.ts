@@ -1,8 +1,11 @@
 import type { Symbol } from "@/entities/symbol";
 
-export interface CompanySearchFieldProps {
+export interface SymbolSearchFieldProps {
+  inputRef: React.RefObject<HTMLInputElement | null>;
   query: string;
-  setQuery: (q: string) => void;
+  focused: boolean;
+  setFocused: (v: boolean) => void;
+  setQuery: (v: string) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   clearSelection: () => void;
 }
@@ -17,4 +20,9 @@ export interface CompanySearchResultListProps {
 export interface CompanySearchRecentListProps {
   recentSymbols: string[];
   onClick: (symbol: string) => void;
+}
+
+export interface SymbolSearchOverlayProps {
+  focused: boolean;
+  setFocused: (v: boolean) => void;
 }

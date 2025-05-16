@@ -1,20 +1,65 @@
-.search-container {
-  background-color: #1d1e20;
-  border-radius: 12px;
-  padding: 16px;
-  color: #cdd1d5;
+/* 기본 검색창 */
+.search-wrapper {
+  position: relative;
+  display: flex;
+  transition: all 0.3s ease;
+  z-index: 50; /* 더 높게 */
+}
+
+.search-wrapper.focused {
+  transform: scale(1.1); /* 또는 width 110% → 중앙 확장 느낌 */
+  background-color: #2f3135;
+  z-index: 50; /* 더 높게 */
+}
+
+.search-panel {
+  position: absolute;
+  top: calc(100% + 8px); /* input 바로 아래 */
+  left: 0;
   width: 100%;
-  max-width: 640px;
+  background-color: #1f2022;
+  border-radius: 10px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.search-input-wrapper {
+  position: relative;
+  z-index: 100;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #2b2d31;
+  border: 1px solid #3a3d40;
+  border-radius: 100px;
+  transition: width 0.3s ease;
+}
+
+.search-input-container.expanded {
+  width: 640px;
+}
+
+.search-input-container.default {
+  width: 320px;
+}
+
+.search-input-icon {
+  color: #a1a1aa;
 }
 
 .search-input {
   width: 100%;
-  background-color: #2b2d31;
+  background-color: transparent;
   color: #f1f3f5;
-  padding: 12px 16px;
   font-size: 0.875rem;
   border: none;
-  border-radius: 8px;
   outline: none;
 }
 
@@ -22,14 +67,28 @@
   color: #7c838a;
 }
 
+/* 어두운 오버레이 */
+.search-input-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  transition: opacity 0.2s ease;
+}
+
+/* 최근 검색 */
 .recent-container {
   margin-top: 8px;
+  margin-bottom: 24px;
 }
 
 .recent-title {
-  font-size: 0.75rem;
-  color: #888e98;
-  margin-bottom: 6px;
+  margin: 0;
+  font-weight: "bold";
+  font-size: 14px;
+  color: #e4e4e5;
+  line-height: 1.45;
+  padding: 8px 4px;
 }
 
 .recent-list {
@@ -51,12 +110,15 @@
   background-color: #3b3d41;
 }
 
+/* 검색 결과 */
 .result-list {
   background-color: #1f2022;
   border-radius: 6px;
   margin-top: 6px;
   max-height: 240px;
   overflow-y: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  z-index: 30;
 }
 
 .result-item {
@@ -73,4 +135,18 @@
 .result-item.selected {
   background-color: #3c4045;
   font-weight: 500;
+}
+
+.symbol-search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 30;
+}
+.symbol-search-panel {
+  position: absolute;
+  z-index: 50; /* 더 높게 */
 }

@@ -6,6 +6,7 @@ import { useSelectionLogic } from "./useSelectionLogic";
 import { useAutoScrollEffect } from "./useAutoScrollEffect";
 import { useConfirmHandler } from "./useConfirmHandler";
 import { findSymbolDisplayAndIndex } from "../lib/findSymbolDisplayAndIndex";
+import { useMousedownEffect } from "./useMousedownEffect";
 
 export function useSymbolSearch() {
   // 입력 상태 및 로딩 상태
@@ -19,7 +20,16 @@ export function useSymbolSearch() {
   const { symbolList } = useSymbolListStore();
   const { filtered } = filterSymbolsByQuery(symbolList, query);
 
-  // 선택 인덱스 관리
+  // 입력창
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // 먼저 상태 초기화
+  const [focused, setFocused] = useState(false); // 또는 useSelectionLogic 내부 반환
+
+  // 다음에 useEffect 기반의 훅을 호출
+  useMousedownEffect(inputRef as RefObject<HTMLElement>, setFocused);
+
+  // 리스트 선택 인덱스 관리
   const { selectedIndex, setSelectedIndex } = useSelectionLogic(filtered);
 
   // 리스트 항목 자동 스크롤
@@ -34,6 +44,7 @@ export function useSymbolSearch() {
     symbolList,
     filtered,
     selectedIndex,
+    setFocused,
     setLoading,
   );
 
@@ -75,7 +86,10 @@ export function useSymbolSearch() {
     query,
     setQuery,
     loading,
+    inputRef,
     filtered,
+    focused,
+    setFocused,
     selectedIndex,
     setSelectedIndex,
     selectedItemRef,

@@ -1,14 +1,14 @@
 import { CompanySearchRecentListProps } from "../types";
 
-export default function CompanySearchRecentList({
+export default function SymbolSearchRecentList({
   recentSymbols,
   onClick,
 }: CompanySearchRecentListProps) {
   if (recentSymbols.length === 0) return null;
 
   return (
-    <div className="recent-container">
-      <p className="recent-title">최근 검색:</p>
+    <div className="recent-container px-4 ">
+      <p className="recent-title mb-1">최근 검색:</p>
       <ul className="recent-list">
         {recentSymbols.map((symbol) => (
           <li

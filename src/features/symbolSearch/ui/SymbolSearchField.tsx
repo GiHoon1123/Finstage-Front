@@ -1,24 +1,38 @@
-import type { CompanySearchFieldProps } from "../types";
+"use client";
+
+import { IoSearch } from "react-icons/io5";
+import type { SymbolSearchFieldProps } from "../types";
 
 export default function SymbolSearchField({
+  inputRef,
   query,
+  focused,
+  setFocused,
   setQuery,
   onKeyDown,
   clearSelection,
-}: CompanySearchFieldProps) {
+}: SymbolSearchFieldProps) {
   return (
-    <div className="flex gap-2 items-center">
-      <input
-        type="text"
-        className="border px-2 py-1 text-sm w-full"
-        placeholder="회사명 또는 티커 검색..."
-        value={query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          clearSelection();
-        }}
-        onKeyDown={onKeyDown}
-      />
+    <div className="search-input-wrapper">
+      <div
+        className={`search-input-container ${focused ? "expanded" : "default"}`}
+      >
+        <IoSearch className="search-input-icon" />
+        <input
+          ref={inputRef}
+          type="text"
+          className="search-input"
+          placeholder="회사명 또는 심볼 검색..."
+          value={query}
+          onFocus={() => setFocused(true)}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            clearSelection();
+            setFocused(true);
+          }}
+          onKeyDown={onKeyDown}
+        />
+      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function SymbolSearchResultList({
   if (filtered.length === 0) return null;
 
   return (
-    <ul className="result-list">
+    <>
       {filtered.map((symbolItem, idx) => {
         const display = `${symbolItem.name} (${symbolItem.symbol})`;
         return (
@@ -23,6 +23,6 @@ export default function SymbolSearchResultList({
           </li>
         );
       })}
-    </ul>
+    </>
   );
 }
