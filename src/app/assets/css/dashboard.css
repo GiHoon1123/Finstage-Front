@@ -1,0 +1,87 @@
+/* 전체 대시보드 배경 */
+
+.dashboard-container {
+  padding: 2rem;
+  min-height: 100vh;
+  color: white;
+  font-family: "Pretendard", sans-serif;
+}
+
+/* 섹션 박스 공통 */
+.section-wrapper {
+  background-color: #1c1d1f;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* 섹션 타이틀 */
+.section-wrapper h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+/* 일반 텍스트 */
+.section-wrapper .text {
+  font-size: 0.875rem;
+  color: #b0b3b8;
+}
+
+/* 강조 텍스트 */
+.text-highlight {
+  color: #f04438;
+  font-weight: 600;
+}
+
+/* 표 스타일 (선택적 적용) */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid #333;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.table th {
+  color: #a1a1aa;
+  font-weight: 500;
+}
+
+.table tr:hover {
+  background-color: #2a2b2e;
+}
+
+.table .positive {
+  color: #ef4444;
+}
+.table .negative {
+  color: #3b82f6;
+}
+
+.dashboard-grid {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch; /* ✅ 이거 꼭 필요함 */
+}
+
+.main-column {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.side-column {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

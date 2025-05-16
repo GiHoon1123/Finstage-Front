@@ -21,7 +21,7 @@ export default function SymbolSearchInput() {
   } = useSymbolSearch();
 
   return (
-    <div className="mb-4">
+    <div>
       {loading && "조회 중..."}
 
       <SymbolSearchRecentList

@@ -1,18 +1,31 @@
-import { SymbolSearchInput } from "@/features/symbolSearch";
-import { StockAnalyticTable } from "@/features/stockAnalytic";
+import {
+  RealTimeChartSection,
+  TrendingStockSection,
+  IndexSummarySection,
+  NewsSummarySection,
+} from "@/widgets/dashboardSection";
+import VerticalDivider from "@/shared/ui/VerticalDivider";
+import HorizontalDivider from "@/shared/ui/HorizontalDivider";
 
-export default function HomePage() {
+export default function DashboardPage() {
   return (
-    <div className="basic-container">
-      <div className="basic-search-box">
-        <SymbolSearchInput />
-      </div>
+    <div className="dashboard-container">
+      <div className="dashboard-grid">
+        {/* 왼쪽 주요 콘텐츠 */}
+        <section className="main-column">
+          <HorizontalDivider width="auto" />
+          <RealTimeChartSection />
+          <TrendingStockSection />
+        </section>
 
-      <div className="basic-result-section">
-        <StockAnalyticTable />
-      </div>
+        <VerticalDivider height="auto" />
 
-      {/* 추후: 인기 종목, 차트, 뉴스 위젯 등 추가 가능 */}
+        {/* 오른쪽 보조 콘텐츠 */}
+        <aside className="side-column">
+          <IndexSummarySection />
+          <NewsSummarySection />
+        </aside>
+      </div>
     </div>
   );
 }

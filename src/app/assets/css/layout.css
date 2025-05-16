@@ -1,0 +1,54 @@
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background-color: #0e0f11;
+  border-bottom: 1px solid #2c2c2e;
+  z-index: 999;
+}
+
+.header-content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo a {
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.nav-menu a:hover {
+  color: white;
+}
+
+.login-btn {
+  background-color: #2f80ed;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
