@@ -58,28 +58,27 @@ export function useSymbolSearch() {
       setSelectedIndex((prev) => Math.max(prev - 1, 0));
     } else if (e.key === "Enter") {
       if (selectedIndex >= 0 && selectedIndex < filtered.length) {
-        setQuery(
-          `${filtered[selectedIndex].name} (${filtered[selectedIndex].symbol})`,
-        );
+        setQuery(filtered[selectedIndex].symbol);
       }
-      handleConfirm(query);
+      handleConfirm(filtered[selectedIndex].symbol);
     }
   };
 
   // 리스트 항목 클릭
-  const handleItemClick = (display: string, index: number) => {
-    setQuery(display);
+  const handleItemClick = (symbol: string, index: number) => {
+    console.log(symbol, index);
+    setQuery(symbol);
     setSelectedIndex(index);
-    handleConfirm(display);
+    handleConfirm(symbol);
   };
 
   // 최근 검색 클릭
   const handleRecentClick = (symbol: string) => {
     const result = findSymbolDisplayAndIndex(symbolList, filtered, symbol);
     if (!result) return;
-    setQuery(result.display);
+    setQuery(symbol);
     setSelectedIndex(result.index);
-    handleConfirm(result.display);
+    handleConfirm(symbol);
   };
 
   return {

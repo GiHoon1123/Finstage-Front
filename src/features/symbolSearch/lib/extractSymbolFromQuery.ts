@@ -2,10 +2,9 @@ import type { Symbol } from "@/entities/symbol";
 
 export function extractSymbolFromQuery(
   query: string,
-  display: string | null,
   symbolList: Symbol[],
 ): Symbol | null {
-  const queryStr = display ?? query;
+  const queryStr = query;
 
   const match = queryStr.match(/\(([^)]+)\)$/);
   let typedSymbol = match?.[1]?.trim() ?? "";

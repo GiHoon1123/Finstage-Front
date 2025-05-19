@@ -17,7 +17,7 @@ export default function SymbolSearchResultList({
             key={symbolItem.symbol}
             ref={idx === selectedIndex ? selectedItemRef : null}
             className={`result-item ${idx === selectedIndex ? "selected" : ""}`}
-            onClick={() => onClick(display, idx)}
+            onClick={() => onClick(symbolItem.symbol, idx)}
           >
             {display}
           </li>

@@ -16,14 +16,10 @@ export function useConfirmHandler(
   const { addRecentSymbol } = useRecentSymbolStore();
 
   const handleConfirm = useCallback(
-    async (query: string, display: string | null = null) => {
-      let symbol = filtered[selectedIndex]?.symbol ?? "";
-
-      if (!symbol) {
-        const found = extractSymbolFromQuery(query, display, symbolList);
-        if (!found) return;
-        symbol = found.symbol;
-      }
+    async (query: string) => {
+      const found = extractSymbolFromQuery(query, symbolList);
+      if (!found) return;
+      const symbol = found.symbol;
 
       addRecentSymbol(symbol);
       setLoading(true);
