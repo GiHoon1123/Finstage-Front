@@ -10,7 +10,6 @@ export default function SymbolSearchInput() {
   const {
     query,
     setQuery,
-    inputRef,
     filtered,
     focused,
     setFocused,
@@ -28,7 +27,6 @@ export default function SymbolSearchInput() {
       <SymbolSearchOverlay focused={focused} setFocused={setFocused} />
 
       <SymbolSearchField
-        inputRef={inputRef}
         query={query}
         focused={focused}
         setFocused={setFocused}

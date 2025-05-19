@@ -1,7 +1,6 @@
 import type { Symbol } from "@/entities/symbol";
 
 export interface SymbolSearchFieldProps {
-  inputRef: React.RefObject<HTMLInputElement | null>;
   query: string;
   focused: boolean;
   setFocused: (v: boolean) => void;

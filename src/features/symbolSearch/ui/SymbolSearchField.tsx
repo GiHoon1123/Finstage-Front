@@ -4,7 +4,6 @@ import { IoSearch } from "react-icons/io5";
 import type { SymbolSearchFieldProps } from "../types";
 
 export default function SymbolSearchField({
-  inputRef,
   query,
   focused,
   setFocused,
@@ -19,7 +18,6 @@ export default function SymbolSearchField({
       >
         <IoSearch className="search-input-icon" />
         <input
-          ref={inputRef}
           type="text"
           className="search-input"
           placeholder="회사명 또는 심볼 검색..."

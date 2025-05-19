@@ -6,7 +6,10 @@ export default function SymbolSearchOverlay({
 }: SymbolSearchOverlayProps) {
   if (focused) {
     return (
-      <div className="symbol-search-overlay" onFocus={() => setFocused(true)} />
+      <div
+        className="symbol-search-overlay"
+        onClick={() => setFocused(false)}
+      />
     );
   }
 }
