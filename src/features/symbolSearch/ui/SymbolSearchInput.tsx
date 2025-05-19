@@ -35,7 +35,7 @@ export default function SymbolSearchInput() {
         clearSelection={() => setSelectedIndex(-1)}
       />
 
-      {query && focused && (
+      {focused && (
         <div className="search-panel">
           <div className="result-list">
             <SymbolSearchRecentList
