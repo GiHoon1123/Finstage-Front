@@ -1,9 +1,26 @@
-export default function StockPage() {
-  return (
-    <div>
-      <div style={{ height: "100px", width: "100px", background: "red" }}>
-        test
-      </div>
-    </div>
-  );
+import { JSX } from "react";
+import { redirect } from "next/navigation";
+import {
+  fetchIncomeStatementBySymbol,
+  NotFoundStockModal,
+} from "@/features/stockAnalytic";
+
+export default async function SymbolRedirectPage(props: {
+  params: Promise<{ symbol: string }>;
+  searchParams: Promise<{ invalid?: string }>;
+}): Promise<JSX.Element | void> {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
+  const symbol = params.symbol.toUpperCase();
+  const isInvalid = searchParams.invalid === "true";
+
+  if (isInvalid) return <NotFoundStockModal />;
+
+  const data = await fetchIncomeStatementBySymbol(symbol);
+  if (data) {
+    redirect(`/stocks/${symbol}/analytics`);
+  }
+
+  redirect(`/stocks/${symbol}?invalid=true`);
 }

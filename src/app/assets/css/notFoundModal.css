@@ -1,0 +1,50 @@
+/* not-supported.css */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(26, 24, 24, 0.85);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background-color: #2b2b2b;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  width: 320px;
+  text-align: center;
+  color: white;
+}
+
+.modal .title {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.modal .desc {
+  font-size: 13px;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+.modal button {
+  background-color: #444;
+  color: white;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal button:hover {
+  background-color: #555;
+}

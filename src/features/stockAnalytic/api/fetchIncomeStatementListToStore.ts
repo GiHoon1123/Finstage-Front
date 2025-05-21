@@ -3,9 +3,9 @@ import {
   useIncomeStatementListStore,
 } from "@/entities/incomeStatement";
 
-export async function fetchIncomeStatementListToStore(
+export default async function fetchIncomeStatementListToStore(
   symbol: IncomeStatement["symbol"],
-) {
+): Promise<boolean> {
   const { setIncomeStatementList } = useIncomeStatementListStore.getState();
 
   try {
@@ -14,7 +14,9 @@ export async function fetchIncomeStatementListToStore(
     console.log("[DEBUG] income list response:", data);
 
     setIncomeStatementList(data);
+    return true;
   } catch (e) {
     console.error("Failed to fetch income statements", e);
+    return false;
   }
 }

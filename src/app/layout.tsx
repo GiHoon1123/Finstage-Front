@@ -10,6 +10,7 @@ import "./assets/css/dashboard.css";
 import "./assets/css/searchInput.css";
 import "./assets/css/incomeStatementTable.css";
 import "./assets/css/notFoundPage.css";
+import "./assets/css/notFoundModal.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
