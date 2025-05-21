@@ -1,19 +1,10 @@
-import type { IncomeStatement } from "@/entities/incomeStatement";
-
-interface Props {
-  columns: string[];
-  grouped: Record<string, IncomeStatement[]>;
-  rows: {
-    label: string;
-    getValue: (list: IncomeStatement[]) => number | string;
-  }[];
-}
+import type { StockAnalyticTableBodyProps } from "../types";
 
 export default function StockAnalyticTableBody({
   columns,
   grouped,
   rows,
-}: Props) {
+}: StockAnalyticTableBodyProps) {
   return (
     <div className="table-wrapper">
       <table className="income-table">

@@ -1,11 +1,15 @@
-import type { ViewMode, SortOrder, IncomeTableHeaderProps } from "../types";
+import type {
+  ViewMode,
+  SortOrder,
+  StockAnalyticTableHeaderProps,
+} from "../types";
 
 export default function StockAnalyticTableHeader({
   viewMode,
   setViewMode,
   sortOrder,
   setSortOrder,
-}: IncomeTableHeaderProps) {
+}: StockAnalyticTableHeaderProps) {
   return (
     <div className="dropdown-group">
       <select
