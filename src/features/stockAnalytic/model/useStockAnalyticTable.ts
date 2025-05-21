@@ -10,6 +10,7 @@ import fetchIncomeStatementListToStore from "../api/fetchIncomeStatementListToSt
 export function useStockAnalyticTable() {
   const params = useParams();
   const symbol = typeof params.symbol === "string" ? params.symbol : "";
+  const [isLoading, setIsLoading] = useState(false);
 
   const { incomeStatementList } = useIncomeStatementListStore();
   const [viewMode, setViewMode] = useState<ViewMode>("annual");
@@ -20,10 +21,18 @@ export function useStockAnalyticTable() {
   const rows = useIncomeStatementRows();
 
   useEffect(() => {
-    if (symbol) {
-      fetchIncomeStatementListToStore(symbol);
+    if (!symbol || isLoading) return;
+
+    const fetchData = async () => {
+      setIsLoading(true);
+      await fetchIncomeStatementListToStore(symbol);
+      setIsLoading(false);
+    };
+
+    if (incomeStatementList[0]?.symbol !== symbol) {
+      fetchData();
     }
-  }, [symbol]);
+  }, [symbol, incomeStatementList, isLoading]);
 
   return {
     viewMode,
