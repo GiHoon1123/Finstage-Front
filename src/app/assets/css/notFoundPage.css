@@ -1,0 +1,58 @@
+.notfound-container {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound-content {
+  text-align: center;
+  color: white;
+}
+
+.notfound-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.notfound-icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #6ca4ff, #3d5cff);
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notfound-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.notfound-description {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+.notfound-button {
+  padding: 10px 16px;
+  background-color: #2f80ed;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.notfound-button:hover {
+  background-color: #3e89eb;
+}
