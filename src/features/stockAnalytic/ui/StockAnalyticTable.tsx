@@ -5,7 +5,7 @@ import { useStockAnalyticTable } from "../model/useStockAnalyticTable";
 import StockAnalyticTableHeader from "./StockAnalyticTableHeader";
 import StockAnalyticTableBody from "./StockAnalyticTableBody";
 
-export default function IncomeStatementTable() {
+export default function StockAnalyticTable() {
   const {
     viewMode,
     setViewMode,

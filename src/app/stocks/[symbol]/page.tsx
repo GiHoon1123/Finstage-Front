@@ -1,7 +1,7 @@
 import { JSX } from "react";
 import { redirect } from "next/navigation";
 import {
-  fetchIncomeStatementBySymbol,
+  fetchIncomeStatementListToStore,
   NotFoundStockModal,
 } from "@/features/stockAnalytic";
 
@@ -17,7 +17,7 @@ export default async function SymbolRedirectPage(props: {
 
   if (isInvalid) return <NotFoundStockModal />;
 
-  const data = await fetchIncomeStatementBySymbol(symbol);
+  const data = await fetchIncomeStatementListToStore(symbol);
   if (data) {
     redirect(`/stocks/${symbol}/analytics`);
   }
