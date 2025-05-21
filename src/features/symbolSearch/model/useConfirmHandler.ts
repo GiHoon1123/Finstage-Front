@@ -1,4 +1,3 @@
-import { fetchIncomeStatementListToStore } from "../api/fetchIncomeStatementListToStore";
 import { extractSymbolFromQuery } from "../lib/extractSymbolFromQuery";
 import { useRecentSymbolStore } from "@/entities/symbol";
 import type { Symbol } from "@/entities/symbol";
@@ -10,7 +9,6 @@ export function useConfirmHandler(
   filtered: Symbol[],
   selectedIndex: number,
   setFocused: (v: boolean) => void,
-  setLoading: (v: boolean) => void,
 ) {
   const router = useRouter();
   const { addRecentSymbol } = useRecentSymbolStore();
@@ -22,9 +20,6 @@ export function useConfirmHandler(
       const symbol = found.symbol;
 
       addRecentSymbol(symbol);
-      setLoading(true);
-      await fetchIncomeStatementListToStore(symbol);
-      setLoading(false);
       setFocused(false);
       router.push(`/stocks/${symbol}/analytics`);
     },

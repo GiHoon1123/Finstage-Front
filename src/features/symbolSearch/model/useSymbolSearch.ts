@@ -10,7 +10,6 @@ import { findSymbolDisplayAndIndex } from "../lib/findSymbolDisplayAndIndex";
 export function useSymbolSearch() {
   // 입력 상태 및 로딩 상태
   const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
 
   // 최근 검색 목록
   const { recentSymbols } = useRecentSymbolStore();
@@ -38,7 +37,6 @@ export function useSymbolSearch() {
     filtered,
     selectedIndex,
     setFocused,
-    setLoading,
   );
 
   // 키보드 입력 처리
@@ -76,7 +74,6 @@ export function useSymbolSearch() {
   return {
     query,
     setQuery,
-    loading,
     filtered,
     focused,
     setFocused,
