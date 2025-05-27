@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { useIncomeStatementListStore } from "@/entities/incomeStatement";
-import { groupByViewMode } from "../lib/groupedIncomeStatement";
-import { getSortedKeys } from "../lib/sortedColumns";
-import { useIncomeStatementRows } from "../lib/incomeStatementRows";
-import type { ViewMode, SortOrder } from "../types";
-import fetchIncomeStatementListToStore from "../api/fetchIncomeStatementListToStore";
+import {
+  useIncomeStatementListStore,
+  fetchIncomeStatementListToStore,
+  incomeStatementRows,
+  groupByViewMode,
+  sortedColumns,
+} from "@/entities/incomeStatement";
+import type { ViewMode, SortOrder } from "@/entities/incomeStatement";
 
 export function useStockAnalyticTable() {
   const params = useParams();
@@ -17,8 +19,8 @@ export function useStockAnalyticTable() {
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
 
   const grouped = groupByViewMode(incomeStatementList, viewMode);
-  const columns = getSortedKeys(grouped, sortOrder);
-  const rows = useIncomeStatementRows();
+  const columns = sortedColumns(grouped, sortOrder);
+  const rows = incomeStatementRows();
 
   useEffect(() => {
     if (!symbol || isLoading) return;

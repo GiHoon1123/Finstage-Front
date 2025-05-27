@@ -3,7 +3,7 @@ import {
   useIncomeStatementListStore,
 } from "@/entities/incomeStatement";
 
-export default async function fetchIncomeStatementListToStore(
+export async function fetchIncomeStatementListToStore(
   symbol: IncomeStatement["symbol"],
 ): Promise<boolean> {
   const { setIncomeStatementList } = useIncomeStatementListStore.getState();

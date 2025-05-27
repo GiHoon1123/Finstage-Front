@@ -1,9 +1,7 @@
 import { JSX } from "react";
 import { redirect } from "next/navigation";
-import {
-  fetchIncomeStatementListToStore,
-  NotFoundStockModal,
-} from "@/features/stockAnalytic";
+import { fetchIncomeStatementListToStore } from "@/entities/incomeStatement";
+import { NotFoundStockModal } from "@/features/stockAnalytic";
 
 export default async function SymbolRedirectPage(props: {
   params: Promise<{ symbol: string }>;

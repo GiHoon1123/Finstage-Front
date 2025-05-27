@@ -1,7 +1,7 @@
-import type { SortOrder } from "../types";
-import type { IncomeStatement } from "@/entities/incomeStatement";
+import type { SortOrder, IncomeStatement } from "../types";
 
-export function getSortedKeys(
+// 정렬하는 도메인 로직
+export function sortedColumns(
   grouped: Record<string, IncomeStatement[]>,
   sortOrder: SortOrder,
 ): string[] {
