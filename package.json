@@ -6,10 +6,11 @@
     "dev": "next dev --turbopack",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:cov": "jest --config jest.config.js --coverage",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "node mock/server.js"
+    "server": "node test/mock/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

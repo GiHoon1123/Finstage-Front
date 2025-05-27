@@ -4,5 +4,5 @@ export { extractSymbolFromQuery } from "./lib/extractSymbolFromQuery";
 export { filterSymbolsByQuery } from "./lib/filterSymbolsByQuery";
 export { findSymbolDisplayAndIndex } from "./lib/findSymbolDisplayAndIndex";
 export { fetchSymbolListToStore } from "./api/fetchSymbolListToStore";
-export { default as SymbolID } from "./ui/SymbolId";
+export { default as SymbolID } from "./ui/SymbolID";
 export { default as SymbolName } from "./ui/SymbolName";

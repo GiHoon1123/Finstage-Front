@@ -38,5 +38,5 @@
     "types.d.ts",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "mock"]
+  "exclude": ["node_modules", "test/mock"]
 }

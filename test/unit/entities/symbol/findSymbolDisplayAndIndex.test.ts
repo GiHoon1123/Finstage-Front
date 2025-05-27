@@ -4,7 +4,7 @@
 // Given : 테스트 실행을 준비하는 단계
 // When : 테스트를 진행하는 단계
 // Then : 테스트 결과를 검증하는 단계
-import { findSymbolDisplayAndIndex } from "../../../entities/symbol/lib/findSymbolDisplayAndIndex";
+import { findSymbolDisplayAndIndex } from "@/entities/symbol/lib/findSymbolDisplayAndIndex";
 import type { Symbol } from "@/entities/symbol";
 
 describe("findSymbolDisplayAndIndex", () => {

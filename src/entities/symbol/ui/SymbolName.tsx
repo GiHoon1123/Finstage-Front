@@ -4,5 +4,9 @@ export default function SymbolName({
   name,
   fontSize = "14px",
 }: SymbolNameProps) {
-  return <span style={{ fontSize }}>{name}</span>;
+  return (
+    <span data-testid="SymbolName" style={{ fontSize }}>
+      {name}
+    </span>
+  );
 }
