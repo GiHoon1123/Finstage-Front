@@ -1,5 +1,6 @@
-import { Symbol } from "@/entities/symbol";
+import { Symbol } from "../types";
 
+//symbolList 필터링
 export function filterSymbolsByQuery(symbolList: Symbol[], query: string) {
   if (!query.trim()) return { filtered: symbolList };
 

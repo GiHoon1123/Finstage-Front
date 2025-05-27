@@ -1,5 +1,6 @@
-import type { Symbol } from "@/entities/symbol";
+import { Symbol } from "../types";
 
+//쿼리에서 symbol 파싱
 export function extractSymbolFromQuery(
   query: string,
   symbolList: Symbol[],

@@ -1,3 +1,4 @@
+import { SymbolID, SymbolName } from "@/entities/symbol";
 import { CompanySearchResultListProps } from "../types";
 
 export default function SymbolSearchResultList({
@@ -11,7 +12,6 @@ export default function SymbolSearchResultList({
   return (
     <>
       {filtered.map((symbolItem, idx) => {
-        const display = `${symbolItem.name} (${symbolItem.symbol})`;
         return (
           <li
             key={symbolItem.symbol}
@@ -19,7 +19,10 @@ export default function SymbolSearchResultList({
             className={`result-item ${idx === selectedIndex ? "selected" : ""}`}
             onClick={() => onClick(symbolItem.symbol, idx)}
           >
-            {display}
+            <span>
+              <SymbolName name={symbolItem.name} />
+              (<SymbolID symbol={symbolItem.symbol} />)
+            </span>
           </li>
         );
       })}

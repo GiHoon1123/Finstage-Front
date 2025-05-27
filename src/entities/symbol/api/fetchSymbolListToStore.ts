@@ -1,5 +1,5 @@
-import { useSymbolListStore } from "@/entities/symbol";
-import { Symbol } from "@/entities/symbol";
+import { useSymbolListStore } from "../model/useSymbolListStore";
+import { Symbol } from "../types";
 
 export async function fetchSymbolListToStore() {
   const { setSymbolList } = useSymbolListStore.getState();

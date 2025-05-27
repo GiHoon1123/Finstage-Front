@@ -1,5 +1,5 @@
-import type { SymbolProps } from "../types";
+import type { SymbolIdProps } from "../types";
 
-export default function SymbolId({ symbol, fontSize = "1rem" }: SymbolProps) {
-  return <span style={{ fontSize, fontWeight: 600 }}>{symbol}</span>;
+export default function SymbolID({ symbol, fontSize = "14px" }: SymbolIdProps) {
+  return <span style={{ fontSize }}>{symbol}</span>;
 }

@@ -1,18 +1,21 @@
 import { useState, useRef, RefObject } from "react";
-import { useSymbolListStore, useRecentSymbolStore } from "@/entities/symbol";
-import { filterSymbolsByQuery } from "../lib/filterSymbolsByQuery";
+import {
+  useSymbolListStore,
+  filterSymbolsByQuery,
+  findSymbolDisplayAndIndex,
+} from "@/entities/symbol";
 import { useSymbolFetchEffect } from "./useSymbolFetchEffect";
 import { useSelectionLogic } from "./useSelectionLogic";
 import { useAutoScrollEffect } from "./useAutoScrollEffect";
 import { useConfirmHandler } from "./useConfirmHandler";
-import { findSymbolDisplayAndIndex } from "../lib/findSymbolDisplayAndIndex";
+import { useRecentSymbols } from "./useRecentSymbol";
 
 export function useSymbolSearch() {
   // 입력 상태 및 로딩 상태
   const [query, setQuery] = useState("");
 
   // 최근 검색 목록
-  const { recentSymbols } = useRecentSymbolStore();
+  const { recentSymbols, addRecentSymbol } = useRecentSymbols();
 
   // symbol 목록 및 필터된 목록
   const { symbolList } = useSymbolListStore();
@@ -37,6 +40,7 @@ export function useSymbolSearch() {
     filtered,
     selectedIndex,
     setFocused,
+    addRecentSymbol,
   );
 
   // 키보드 입력 처리

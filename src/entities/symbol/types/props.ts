@@ -1,6 +1,6 @@
 import type { Symbol } from "./symbol";
 
-export interface SymbolProps {
+export interface SymbolIdProps {
   symbol: Symbol["symbol"];
   fontSize?: string;
 }

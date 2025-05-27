@@ -1,5 +1,4 @@
-import { extractSymbolFromQuery } from "../lib/extractSymbolFromQuery";
-import { useRecentSymbolStore } from "@/entities/symbol";
+import { extractSymbolFromQuery } from "@/entities/symbol";
 import type { Symbol } from "@/entities/symbol";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
@@ -9,9 +8,9 @@ export function useConfirmHandler(
   filtered: Symbol[],
   selectedIndex: number,
   setFocused: (v: boolean) => void,
+  addRecentSymbol: (v: string) => void,
 ) {
   const router = useRouter();
-  const { addRecentSymbol } = useRecentSymbolStore();
 
   const handleConfirm = useCallback(
     async (query: string) => {

@@ -1,5 +1,6 @@
-import { Symbol } from "@/entities/symbol";
+import { Symbol } from "../types";
 
+//display 문자열과 index 계산
 export function findSymbolDisplayAndIndex(
   symbolList: Symbol[],
   filtered: Symbol[],
