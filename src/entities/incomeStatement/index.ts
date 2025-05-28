@@ -1,6 +1,9 @@
 export type { IncomeStatement, ViewMode, SortOrder } from "./types";
 export { useIncomeStatementListStore } from "./model/useIncomeStatementListStore";
-export { groupByViewMode } from "./lib/groupedIncomeStatement";
+export {
+  groupByViewMode,
+  getLabelByViewMode,
+} from "./lib/groupedIncomeStatement";
 export { incomeStatementRows } from "./lib/incomeStatementRows";
 export { sortedColumns } from "./lib/sortedColumns";
 export { fetchIncomeStatementListToStore } from "./api/fetchIncomeStatementListToStore";
