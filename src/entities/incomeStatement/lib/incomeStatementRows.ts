@@ -1,22 +1,8 @@
-import type { IncomeStatement } from "@/entities/incomeStatement";
-import type { NumericField } from "../types";
+import type { IncomeStatement } from "../types";
+import { calcSum, calcRatio, calcEPS } from "./calculations";
 
-// 계산 함수들 (순수 함수)
-export function calcSum(list: IncomeStatement[], field: NumericField): number {
-  return list.reduce((sum, d) => sum + (d[field] as number), 0);
-}
-
-export function calcRatio(numerator: number, denominator: number): string {
-  return denominator ? ((numerator / denominator) * 100).toFixed(1) + "%" : "-";
-}
-
-export function calcEPS(list: IncomeStatement[]): string {
-  const total = calcSum(list, "eps");
-  return (total / list.length).toFixed(2);
-}
-
-// 최종 행 정의 반환
-export const useIncomeStatementRows = () => {
+// 내부적으로 도메인 계산을 집계하는 도메인 로직
+export const incomeStatementRows = () => {
   return [
     {
       label: "매출액",

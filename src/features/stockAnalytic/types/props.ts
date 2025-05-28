@@ -1,5 +1,8 @@
-import type { IncomeStatement } from "@/entities/incomeStatement";
-import type { ViewMode, SortOrder } from "./index";
+import type {
+  IncomeStatement,
+  ViewMode,
+  SortOrder,
+} from "@/entities/incomeStatement";
 
 export interface StockAnalyticTableBodyProps {
   columns: string[];
