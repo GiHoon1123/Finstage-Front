@@ -4,8 +4,9 @@
 // Given : 테스트 실행을 준비하는 단계
 // When : 테스트를 진행하는 단계
 // Then : 테스트 결과를 검증하는 단계
-import { fetchSymbolListToStore } from "@/entities/symbol/api/fetchSymbolListToStore";
+import { fetchSymbolListToStore } from "@/entities/symbol";
 import { useSymbolListStore } from "@/entities/symbol";
+import type { Symbol } from "@/entities/symbol";
 
 describe("fetchSymbolListToStore", () => {
   beforeEach(() => {
@@ -15,7 +16,22 @@ describe("fetchSymbolListToStore", () => {
 
   it("빈 store, fetchSymbolListToStore를 호출하면, API 응답이 store에 저장된다", async () => {
     // Given
-    const mockData = [{ symbol: "SYPEF" }];
+    const mockData: Symbol[] = [
+      {
+        symbol: "QARGD",
+        name: "Smitham, Greenholt and Hagenes Inc.",
+        lastsale: "$115.15",
+        netchange: "2.34",
+        pctchange: "-8.22%",
+        volume: "948,707",
+        marketCap: "4442955649",
+        country: "Georgia",
+        ipoyear: "2019",
+        industry: "Jewelry",
+        sector: "Ergonomic",
+        url: "/market-activity/stocks/qargd",
+      },
+    ];
     global.fetch = jest.fn(() =>
       Promise.resolve({
         json: () => Promise.resolve(mockData),
