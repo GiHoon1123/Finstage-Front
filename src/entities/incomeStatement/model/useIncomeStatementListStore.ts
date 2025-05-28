@@ -6,6 +6,6 @@ export const useIncomeStatementListStore = create<IncomeStatementListState>(
     incomeStatementList: [],
     setIncomeStatementList: (incomeList) =>
       set({ incomeStatementList: incomeList }),
-    clearIncomeStatementList: () => set({ incomeStatementList: [] }),
+    // clearIncomeStatementList: () => set({ incomeStatementList: [] }),
   }),
 );
