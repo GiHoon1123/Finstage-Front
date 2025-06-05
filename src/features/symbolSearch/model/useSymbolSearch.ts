@@ -14,15 +14,17 @@ export function useSymbolSearch() {
   // 입력 상태 및 로딩 상태
   const [query, setQuery] = useState("");
 
-  // 최근 검색 목록
-  const { recentSymbols, addRecentSymbol } = useRecentSymbols();
+  // 화면 포커싱 유무
+  const [focused, setFocused] = useState(false);
 
-  // symbol 목록 및 필터된 목록
+  // symbol 목록
   const { symbolList } = useSymbolListStore();
+
+  // 입력값에 대한 필터된 목록
   const { filtered } = filterSymbolsByQuery(symbolList, query);
 
-  // 먼저 상태 초기화
-  const [focused, setFocused] = useState(false); // 또는 useSelectionLogic 내부 반환
+  // 최근 검색 목록
+  const { recentSymbols, addRecentSymbol } = useRecentSymbols();
 
   // 리스트 선택 인덱스 관리
   const { selectedIndex, setSelectedIndex } = useSelectionLogic(filtered);
@@ -52,10 +54,12 @@ export function useSymbolSearch() {
       e.preventDefault();
       setSelectedIndex((prev) => Math.max(prev - 1, 0));
     } else if (e.key === "Enter") {
+      e.preventDefault();
       if (selectedIndex >= 0 && selectedIndex < filtered.length) {
-        setQuery(filtered[selectedIndex].symbol);
+        const selectedSymbol = filtered[selectedIndex].symbol;
+        setQuery(selectedSymbol);
+        handleConfirm(selectedSymbol);
       }
-      handleConfirm(filtered[selectedIndex].symbol);
     }
   };
 
