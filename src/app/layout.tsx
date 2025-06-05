@@ -3,14 +3,14 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { usePathname } from "next/navigation";
 import { Header } from "@/widgets/pageLayout";
-import "./assets/css/globals.css";
-import "./assets/css/basic.css";
-import "./assets/css/layout.css";
-import "./assets/css/dashboard.css";
-import "./assets/css/searchInput.css";
-import "./assets/css/incomeStatementTable.css";
-import "./assets/css/notFoundPage.css";
-import "./assets/css/notFoundModal.css";
+import "../shared/assets/css/globals.css";
+import "../shared/assets/css/basic.css";
+import "../shared/assets/css/layout.css";
+import "../shared/assets/css/dashboard.css";
+import "../shared/assets/css/searchInput.css";
+import "../shared/assets/css/incomeStatementTable.css";
+import "../shared/assets/css/notFoundPage.css";
+import "../shared/assets/css/notFoundModal.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
