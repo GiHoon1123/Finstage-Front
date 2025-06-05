@@ -24,3 +24,12 @@ body {
   color: #f1f3f5; /* 밝은 회색 텍스트 */
   font-family: "Pretendard", sans-serif;
 }
+
+.widgets-center {
+  display: flex;
+  align-items: center;
+}
+
+.widgets-center-height {
+  min-height: 90vh;
+}

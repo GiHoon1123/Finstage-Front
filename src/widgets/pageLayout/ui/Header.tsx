@@ -14,7 +14,9 @@ export default function Header() {
 
         {/* 내비게이션 메뉴 */}
         <nav className="nav-menu">
-          <Link href="/stocks">주식</Link>
+          <Link href="/">홈</Link>
+          <Link href="/news">뉴스</Link>
+          <Link href="/request">추가 요청하기</Link>
           <Link href="/analytics">분석</Link>
           <SymbolSearchInput />
         </nav>
