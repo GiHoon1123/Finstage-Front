@@ -1,1 +1,1 @@
-export { default as SymbolRequestForm } from "./ui/SymbolRequestForm";
+export { default as SymbolRequest } from "./ui/SymbolRequest";

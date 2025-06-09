@@ -18,7 +18,7 @@ export async function postSymbolRequest(symbol: string): Promise<{
 
     return {
       success: true,
-      message: data.data || "요청이 성공적으로 접수되었습니다.",
+      message: "요청이 성공적으로 접수되었습니다.",
     };
   } catch {
     return {
