@@ -1,8 +1,5 @@
-import type {
-  ViewMode,
-  SortOrder,
-  StockAnalyticTableHeaderProps,
-} from "../types";
+import type { StockAnalyticTableHeaderProps } from "../types";
+import type { ViewMode, SortOrder } from "@/entities/incomeStatement";
 
 export default function StockAnalyticTableHeader({
   viewMode,
