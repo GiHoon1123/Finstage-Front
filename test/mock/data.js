@@ -50,4 +50,28 @@ function generateMockSymbols(count) {
   });
 }
 
-module.exports = { generateMockIncomeStatements, generateMockSymbols };
+function generateMockNewsItems(symbol = null, count = 3) {
+  const symbols = ["AAPL", "GOOGL", "TSLA", "NVDA", "AMZN"];
+
+  return Array.from({ length: count }).map((_, idx) => {
+    const finalSymbol =
+      symbol || symbols[Math.floor(Math.random() * symbols.length)];
+
+    return {
+      id: 1 + idx,
+      symbol: finalSymbol,
+      title: `${finalSymbol} News`,
+      summary: `Comprehensive up-to-date news coverage, ${faker.lorem.sentence(
+        10,
+      )}`,
+      url: faker.internet.url(),
+      date: faker.date.recent({ days: 30 }).toISOString(),
+    };
+  });
+}
+
+module.exports = {
+  generateMockIncomeStatements,
+  generateMockSymbols,
+  generateMockNewsItems,
+};
