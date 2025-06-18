@@ -12,6 +12,7 @@ import "../shared/assets/css/incomeStatementTable.css";
 import "../shared/assets/css/notFoundPage.css";
 import "../shared/assets/css/notFoundModal.css";
 import "../shared/assets/css/symbolRequest.css";
+import "../shared/assets/css/topNews.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
