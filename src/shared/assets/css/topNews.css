@@ -9,8 +9,9 @@
 }
 
 .top-news-title {
-  font-size: 1.25rem;
+  font-size: 24px;
   font-weight: bold;
+  line-height: 1.45;
 }
 
 /* Layout: 대표 뉴스 + 리스트 */
