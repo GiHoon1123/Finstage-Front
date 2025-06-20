@@ -1,5 +1,6 @@
 import { formatRelativeTime } from "@/entities/content";
 import type { Content } from "@/entities/content";
+import Link from "next/link";
 
 export default function TopNewsListItem({
   news,
@@ -11,7 +12,11 @@ export default function TopNewsListItem({
   const hasImage = false; // 나중에 news.imgurl 생기면: !!news.thumbnail
 
   return (
-    <div className={`list-item ${compact ? "compact" : ""}`}>
+    <Link
+      href={news.url}
+      target="_blank"
+      className={`list-item ${compact ? "compact" : ""}`}
+    >
       {hasImage && (
         <div className="thumbnail-placeholder">
           <img src={"news.imgurl"} alt="" className="thumbnail" />
@@ -22,6 +27,6 @@ export default function TopNewsListItem({
         <p className="summary">{news.summary}</p>
         <p className="meta">{formatRelativeTime(news.date)} • 뉴스</p>
       </div>
-    </div>
+    </Link>
   );
 }

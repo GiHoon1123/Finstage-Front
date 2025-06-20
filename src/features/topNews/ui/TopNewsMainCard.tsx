@@ -1,11 +1,16 @@
 import { formatRelativeTime } from "@/entities/content";
 import type { Content } from "@/entities/content";
+import Link from "next/link";
 
 export default function TopNewsMainCard({ news }: { news: Content }) {
   const hasImage = false; // 나중엔: !!news.imgurl
 
   return (
-    <div className={`main-card ${hasImage ? "with-image" : "text-only"}`}>
+    <Link
+      href={news.url}
+      target="_blank"
+      className={`main-card ${hasImage ? "with-image" : "text-only"}`}
+    >
       {hasImage ? (
         <>
           <img
@@ -26,6 +31,6 @@ export default function TopNewsMainCard({ news }: { news: Content }) {
           {news.summary && <p className="main-card-summary">{news.summary}</p>}
         </div>
       )}
-    </div>
+    </Link>
   );
 }
