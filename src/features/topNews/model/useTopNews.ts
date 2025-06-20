@@ -9,7 +9,7 @@ export function useTopNews() {
 
   useEffect(() => {
     // 이미 데이터가 없다면 fetch
-    fetchContentListToStore({ page: 1, size: 6 });
+    fetchContentListToStore({ page: 1, size: 5 });
   }, []);
 
   return {
