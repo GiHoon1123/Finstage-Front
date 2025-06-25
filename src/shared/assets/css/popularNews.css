@@ -1,0 +1,62 @@
+.popular-news-section {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  color: white;
+}
+
+.popular-news-title {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.popular-news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.popular-news-card {
+  background-color: #1a1a1a;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.popular-news-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 1);
+}
+
+.popular-news-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #333;
+  border-radius: 0.5rem;
+}
+
+.popular-news-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.popular-news-symbol {
+  font-size: 0.75rem;
+  color: #bbb;
+}
+
+.popular-news-title-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #eee;
+  line-height: 1.3;
+}
+
+.popular-news-meta {
+  font-size: 0.75rem;
+  color: #888;
+}
