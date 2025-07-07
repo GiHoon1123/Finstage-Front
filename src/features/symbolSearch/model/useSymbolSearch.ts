@@ -9,6 +9,7 @@ import { useSelectionLogic } from "./useSelectionLogic";
 import { useAutoScrollEffect } from "./useAutoScrollEffect";
 import { useConfirmHandler } from "./useConfirmHandler";
 import { useRecentSymbols } from "./useRecentSymbol";
+import { useFreezeBodyScroll } from "./useFreezeBodyScroll";
 
 export function useSymbolSearch() {
   // 입력 상태 및 로딩 상태
@@ -28,6 +29,9 @@ export function useSymbolSearch() {
 
   // 리스트 선택 인덱스 관리
   const { selectedIndex, setSelectedIndex } = useSelectionLogic(filtered);
+
+  // 포커싱시 body 스크롤 제거 및 복구
+  useFreezeBodyScroll(focused);
 
   // 리스트 항목 자동 스크롤
   const selectedItemRef = useRef<HTMLLIElement | null>(null);

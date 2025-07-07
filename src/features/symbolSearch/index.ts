@@ -5,5 +5,6 @@ export { useRecentSymbols } from "./model/useRecentSymbol";
 export { useSelectionLogic } from "./model/useSelectionLogic";
 export { useSymbolFetchEffect } from "./model/useSymbolFetchEffect";
 export { useSymbolSearch } from "./model/useSymbolSearch";
+export { useFreezeBodyScroll } from "./model/useFreezeBodyScroll";
 // export { useSelectedCompany } from "./model/useSelectedCompany";
 // export { useFilteredStatements } from "./model/useFilteredStatements";
