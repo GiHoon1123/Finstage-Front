@@ -1,10 +1,12 @@
 import SectionWrapper from "./SectionWrapper";
 
+import { TopNewsPanel } from "@/features/topNews";
+
 export default function NewsSummarySection() {
   return (
-    <SectionWrapper title="뉴스Summary">
+    <SectionWrapper title="주요 뉴스">
       <div className="text-gray-400 text-sm">
-        {/* 뉴스Summary 콘텐츠가 여기에 표시됩니다. */}
+        <TopNewsPanel variant="compact" />
       </div>
     </SectionWrapper>
   );

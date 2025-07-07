@@ -3,9 +3,9 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 56px;
+  height: 60px;
   background-color: #17171c;
-  border-bottom: 1px solid #2c2c2e;
+  /* border-bottom: 1px solid #2c2c2e; */
   z-index: 999;
 }
 
@@ -21,7 +21,7 @@
 
 .logo a {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   color: white;
   text-decoration: none;
 }
