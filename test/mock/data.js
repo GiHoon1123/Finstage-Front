@@ -70,8 +70,43 @@ function generateMockNewsItems(symbol = null, count = 3) {
   });
 }
 
+let lastPrice = 100;
+function generateMockCandle(prev = null) {
+  const time = Math.floor(Date.now() / 1000);
+  const open = lastPrice;
+  const close = parseFloat((open + (Math.random() - 0.5) * 2).toFixed(2));
+  const high = parseFloat((Math.max(open, close) + Math.random()).toFixed(2));
+  const low = parseFloat((Math.min(open, close) - Math.random()).toFixed(2));
+
+  lastPrice = close;
+
+  return {
+    time,
+    open,
+    high,
+    low,
+    close,
+  };
+}
+
+let lastValue = 100;
+function generateMockVolumeCandle(prev = null) {
+  const time = Math.floor(Date.now() / 1000);
+  const value = parseFloat((lastValue + (Math.random() - 0.5) * 2).toFixed(2));
+  const color = lastValue < value ? "#ef5350" : "#0067a3";
+  lastValue = value;
+
+  return {
+    time,
+    value,
+    color,
+  };
+}
+
 module.exports = {
   generateMockIncomeStatements,
   generateMockSymbols,
   generateMockNewsItems,
+  generateMockCandle,
+  generateMockVolumeCandle,
 };
