@@ -14,6 +14,7 @@ import "../shared/assets/css/notFoundModal.css";
 import "../shared/assets/css/symbolRequest.css";
 import "../shared/assets/css/topNews.css";
 import "../shared/assets/css/popularNews.css";
+import "../shared/assets/css/chartHeader.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

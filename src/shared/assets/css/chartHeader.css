@@ -1,0 +1,87 @@
+.stock-header {
+  width: 100%;
+  background-color: #121212;
+  padding: 16px 24px;
+  border-bottom: 1px solid #2a2a2a;
+  color: white;
+  box-sizing: border-box;
+}
+
+.stock-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stock-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stock-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.stock-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.stock-code {
+  font-size: 14px;
+  color: #999999;
+  margin-left: 8px;
+}
+
+.stock-price-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.stock-price {
+  color: white;
+}
+
+.stock-change.up {
+  color: #ef5350;
+}
+
+.badge {
+  background-color: #00c853;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.login-button {
+  font-size: 14px;
+  color: #60a5fa;
+  cursor: pointer;
+}
+
+.stock-tabs {
+  margin-top: 16px;
+  display: flex;
+  gap: 24px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #999999;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tab.active {
+  color: white;
+  font-weight: bold;
+}

@@ -20,7 +20,7 @@ export function useConfirmHandler(
 
       addRecentSymbol(symbol);
       setFocused(false);
-      router.push(`/stocks/${symbol}/analytics`);
+      router.push(`/stocks/${symbol}/order`);
     },
     [filtered, selectedIndex, symbolList],
   );

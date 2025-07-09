@@ -4,7 +4,8 @@
   left: 0;
   right: 0;
   height: 60px;
-  background-color: #17171c;
+  background-color: #101013;
+  /* background-color: #17171c; */
   /* border-bottom: 1px solid #2c2c2e; */
   z-index: 999;
 }

@@ -17,7 +17,6 @@ export default function Header() {
           <Link href="/">홈</Link>
           <Link href="/news">뉴스</Link>
           <Link href="/request">추가 요청하기</Link>
-          <Link href="/analytics">분석</Link>
           <SymbolSearchInput />
         </nav>
 

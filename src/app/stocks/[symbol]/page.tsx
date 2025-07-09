@@ -17,7 +17,7 @@ export default async function SymbolRedirectPage(props: {
 
   const data = await fetchIncomeStatementListToStore(symbol);
   if (data) {
-    redirect(`/stocks/${symbol}/analytics`);
+    redirect(`/stocks/${symbol}/order`);
   }
 
   redirect(`/stocks/${symbol}?invalid=true`);

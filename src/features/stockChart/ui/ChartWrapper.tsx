@@ -9,10 +9,9 @@ import {
   ISeriesApi,
   HistogramData,
 } from "lightweight-charts";
-import { useStockSocket } from "../model/useStockSocket";
-import { useVolumeSocket } from "../model/useVolumeSocket";
+import { useStockSocket, useVolumeSocket } from "@/entities/order";
 
-export default function ChartTest() {
+export default function ChartWrapper() {
   const chartRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const candleSeriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
@@ -39,7 +38,7 @@ export default function ChartTest() {
       width: chartRef.current.clientWidth,
       height: chartRef.current.clientHeight,
       layout: {
-        background: { color: "black" },
+        background: { color: "#17171c" },
         textColor: "white",
         panes: {
           //패널 옵션
@@ -176,7 +175,7 @@ export default function ChartTest() {
   }, []);
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "80vh" }}>
+    <div style={{ position: "relative", width: "100%", height: "50vh" }}>
       <div
         ref={chartRef}
         style={{ width: "100%", height: "100%" }}
