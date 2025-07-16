@@ -1,13 +1,21 @@
-import { ChartHeader, ChartWrapper } from "@/features/stockChart";
+import {
+  ChartSymbolInfoWidget,
+  ChartWidget,
+  ChartHeader,
+  // ChartWrapper,
+} from "@/features/stockChart";
 
 export default function StockOrderSection() {
   return (
     <section>
       <div className="basic-container">
-        <ChartHeader />
-        <div className="basic-result-section">
-          <ChartWrapper />
+        <ChartSymbolInfoWidget />
+        <div style={{ height: "65vmin" }}>
+          <ChartWidget />
         </div>
+        {/* <div className="basic-result-section">
+          <ChartWrapper />
+        </div> */}
       </div>
     </section>
   );

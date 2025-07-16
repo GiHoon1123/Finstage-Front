@@ -24,11 +24,31 @@ function generateMockIncomeStatements(symbol, count) {
 }
 
 function generateMockSymbols(count) {
-  return Array.from({ length: count }, () => {
-    const symbol =
-      faker.finance.currencyCode().toUpperCase() +
-      faker.string.alpha({ length: 2 }).toUpperCase();
+  // 의미있는 실제 주식 심볼들
+  const realSymbols = [
+    "MSFT",
+    "NFLX",
+    "META",
+    "AAPL",
+    "GOOGL",
+    "TSLA",
+    "NVDA",
+    "AMZN",
+  ];
 
+  // 나머지 개수만큼 랜덤 심볼 생성
+  const additionalCount = Math.max(0, count - realSymbols.length);
+  const generatedSymbols = Array.from({ length: additionalCount }, () => {
+    return (
+      faker.finance.currencyCode().toUpperCase() +
+      faker.string.alpha({ length: 2 }).toUpperCase()
+    );
+  });
+
+  // 실제 심볼과 생성된 심볼 합치기
+  const allSymbols = [...realSymbols, ...generatedSymbols];
+
+  return allSymbols.map((symbol) => {
     return {
       symbol,
       name: faker.company.name() + " Inc.",
