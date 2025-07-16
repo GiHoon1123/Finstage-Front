@@ -45,7 +45,6 @@ export default function ChartWidget() {
             "studies": [],
             "autosize": true
         }`;
-
     chartRef.current.appendChild(script);
 
     return () => {

@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import ChartWidget from "./ChartWidget";
 import type { ChartWidgetBox } from "../types";
 
-export default function ChartWidgetBox({ height = 60 }: ChartWidgetBox) {
+export default function ChartWidgetBox({
+  children,
+  height = 60,
+}: ChartWidgetBox) {
   const [chartHeight, setChartHeight] = useState(400);
 
   useEffect(() => {
@@ -18,9 +20,5 @@ export default function ChartWidgetBox({ height = 60 }: ChartWidgetBox) {
     return () => window.removeEventListener("resize", calculateHeight);
   }, []);
 
-  return (
-    <div style={{ height: `${chartHeight}px` }}>
-      <ChartWidget />
-    </div>
-  );
+  return <div style={{ height: `${chartHeight}px` }}>{children}</div>;
 }

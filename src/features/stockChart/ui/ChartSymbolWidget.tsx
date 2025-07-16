@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
-export default function ChartSymbolInfoWidget() {
+export default function ChartSymbolWidget() {
   const chartRef = useRef<HTMLDivElement>(null);
   const segment = usePathname();
   const symbol = segment.split("/")[2];
@@ -27,7 +27,17 @@ export default function ChartSymbolInfoWidget() {
           "width": "100%"
         }`;
     chartRef.current.appendChild(script);
+
+    return () => {
+      chartRef.current = null;
+    };
   }, []);
 
-  return <div className="tradingview-widget-container" ref={chartRef}></div>;
+  return (
+    <div
+      className="tradingview-widget-container"
+      style={{ height: "100%", width: "100%" }}
+      ref={chartRef}
+    ></div>
+  );
 }

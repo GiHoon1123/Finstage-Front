@@ -1,11 +1,17 @@
-import { ChartSymbolInfoWidget, ChartWidgetBox } from "@/features/stockChart";
+import {
+  ChartHeader,
+  ChartWidget,
+  ChartWidgetBox,
+} from "@/features/stockChart";
 
 export default function StockOrderSection() {
   return (
     <section>
       <div className="basic-container">
-        <ChartSymbolInfoWidget />
-        <ChartWidgetBox />
+        <ChartHeader />
+        <ChartWidgetBox height={60}>
+          <ChartWidget />
+        </ChartWidgetBox>
       </div>
     </section>
   );
