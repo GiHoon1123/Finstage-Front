@@ -17,6 +17,19 @@ export default function ChartWrapper() {
   const candleSeriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
   const volumeSeriesRef = useRef<ISeriesApi<"Histogram"> | null>(null);
 
+  useEffect(() => {
+    const calculateHeight = () => {
+      if (!chartRef.current) return;
+      const newheight = Math.floor(window.innerHeight * (70 * 0.01));
+      chartRef.current.style.height = newheight + "px";
+    };
+
+    calculateHeight();
+    window.addEventListener("resize", calculateHeight);
+
+    return () => window.removeEventListener("resize", calculateHeight);
+  }, []);
+
   // ✅ 실시간 주가 업데이트
   const handleCandle = useCallback((data: CandlestickData) => {
     candleSeriesRef.current?.update(data);
@@ -31,10 +44,15 @@ export default function ChartWrapper() {
   useVolumeSocket({ onCandleUpdate: handlevolumCandle });
 
   useEffect(() => {
+    const myPriceFormatter = Intl.NumberFormat(window.navigator.languages[0], {
+      style: "currency",
+      currency: "KRW", // Currency for data points
+    }).format;
+
     if (!chartRef.current) return;
 
     const chart = createChart(chartRef.current, {
-      localization: { locale: "ko" },
+      localization: { locale: "ko", priceFormatter: myPriceFormatter },
       width: chartRef.current.clientWidth,
       height: chartRef.current.clientHeight,
       layout: {
@@ -175,7 +193,7 @@ export default function ChartWrapper() {
   }, []);
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "50vh" }}>
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <div
         ref={chartRef}
         style={{ width: "100%", height: "100%" }}
