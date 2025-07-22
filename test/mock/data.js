@@ -23,6 +23,27 @@ function generateMockIncomeStatements(symbol, count) {
   });
 }
 
+function generateMockSymbolInfo(symbol) {
+  return {
+    symbol,
+    name: `${symbol} ` + faker.company.name() + " Inc.",
+    lastsale: `$${faker.finance.amount({ min: 5, max: 500, dec: 2 })}`,
+    netchange: faker.finance.amount({ min: -5, max: 5, dec: 2 }),
+    pctchange: `${faker.finance.amount({ min: -10, max: 10, dec: 2 })}%`,
+    volume: faker.number.int({ min: 10000, max: 1000000 }).toLocaleString(),
+    marketCap: faker.finance.amount({
+      min: 100000000,
+      max: 5000000000,
+      dec: 0,
+    }),
+    country: faker.location.country(),
+    ipoyear: faker.date.past({ years: 10 }).getFullYear().toString(),
+    industry: faker.commerce.department(),
+    sector: faker.commerce.productAdjective(),
+    url: `/market-activity/stocks/${symbol.toLowerCase()}`,
+  };
+}
+
 function generateMockSymbols(count) {
   // 의미있는 실제 주식 심볼들
   const realSymbols = [
@@ -125,6 +146,7 @@ function generateMockVolumeCandle(prev = null) {
 
 module.exports = {
   generateMockIncomeStatements,
+  generateMockSymbolInfo,
   generateMockSymbols,
   generateMockNewsItems,
   generateMockCandle,

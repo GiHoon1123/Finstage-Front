@@ -1,11 +1,11 @@
 import { StockAnalyticTable } from "@/features/stockAnalytic";
-import { ChartHeader } from "@/features/stockChart";
+import { StockInfo } from "@/features/stockChart";
 
 export default function StockAnalyticSection() {
   return (
     <section>
       <div className="basic-container">
-        <ChartHeader />
+        <StockInfo />
         <div className="basic-result-section">
           <StockAnalyticTable />
         </div>

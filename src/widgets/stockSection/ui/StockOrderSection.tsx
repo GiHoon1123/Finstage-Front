@@ -1,16 +1,14 @@
 import {
-  ChartHeader,
   ChartWidget,
   ChartWidgetBox,
-  ChartWrapper,
   ChartSymbolWidget,
 } from "@/features/stockChart";
+import ChartWrapper from "@/features/stockChart/ui/ChartWrapper";
 
 export default function StockOrderSection() {
   return (
     <section>
       <div className="basic-container">
-        <ChartHeader />
         <ChartWrapper />
       </div>
       <div className="basic-container">

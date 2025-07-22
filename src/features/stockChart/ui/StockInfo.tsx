@@ -1,15 +1,26 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import { tabHandlerEndpoint } from "../lib/tabHandlerEndpoint";
+import type { Symbol } from "@/entities/symbol";
+import Link from "next/link";
 
-export default function ChartHeader() {
+interface chartType {
+  symbol: Symbol;
+}
+
+export default function ChartHeader({ symbol }: chartType) {
+  console.log(symbol?.symbol);
   const router = useRouter();
   const segment = usePathname();
+  console.log(segment);
+  // const symbol = segment.split("/")[2];
 
   const handleConfirm = (domain: string) => {
     const p = segment.split("/");
     p.pop();
     const path = p.join("/") + "/" + domain;
+    console.log(path);
     router.push(path);
   };
 
@@ -20,7 +31,8 @@ export default function ChartHeader() {
           {/* <img src="/logo.png" alt="logo" className="stock-logo" /> */}
           <div>
             <div className="stock-name">
-              YG PLUS <span className="stock-code">037270</span>
+              {symbol?.symbol}{" "}
+              <span className="stock-code">{symbol?.symbol}</span>
             </div>
             <div className="stock-price-info">
               <span className="stock-price">10,260원</span>
@@ -38,6 +50,7 @@ export default function ChartHeader() {
         <button className="tab" onClick={() => handleConfirm("analytics")}>
           종목진단
         </button>
+        <Link href={`/stocks/${symbol?.symbol}/order`}>홈</Link>
         <button className="tab">뉴스·공시</button>
         <button className="tab">거래현황</button>
         <button className="tab">커뮤니티</button>

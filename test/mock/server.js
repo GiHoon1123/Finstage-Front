@@ -6,6 +6,7 @@ const http = require("http");
 
 const {
   generateMockSymbols,
+  generateMockSymbolInfo,
   generateMockIncomeStatements,
   generateMockNewsItems,
   generateMockCandle,
@@ -47,6 +48,12 @@ app.get("/api/income/:symbol", (req, res) => {
   const { symbol } = req.params;
   const count = parseInt(req.query.count) || 25;
   const data = generateMockIncomeStatements(symbol, count);
+  res.json(data);
+});
+
+app.get("/api/symbols/:symbol", (req, res) => {
+  const { symbol } = req.params;
+  const data = generateMockSymbolInfo(symbol);
   res.json(data);
 });
 

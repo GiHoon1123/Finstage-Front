@@ -1,8 +1,10 @@
 export type { Symbol } from "./types";
+export { useSymbolStore } from "./model/useSymbolStore";
 export { useSymbolListStore } from "./model/useSymbolListStore";
 export { extractSymbolFromQuery } from "./lib/extractSymbolFromQuery";
 export { filterSymbolsByQuery } from "./lib/filterSymbolsByQuery";
 export { findSymbolDisplayAndIndex } from "./lib/findSymbolDisplayAndIndex";
+export { featSymbolToStore } from "./api/featSymbolToStore";
 export { fetchSymbolListToStore } from "./api/fetchSymbolListToStore";
 export { default as SymbolID } from "./ui/SymbolID";
 export { default as SymbolName } from "./ui/SymbolName";
