@@ -1,7 +1,8 @@
 /* 전체 대시보드 배경 */
 
 .dashboard-container {
-  padding: 2rem;
+  /* padding: 2rem; */
+  padding: 2rem 21rem;
   min-height: 100vh;
   color: white;
   font-family: "Pretendard", sans-serif;
