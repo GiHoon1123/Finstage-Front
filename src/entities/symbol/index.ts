@@ -6,5 +6,5 @@ export { filterSymbolsByQuery } from "./lib/filterSymbolsByQuery";
 export { findSymbolDisplayAndIndex } from "./lib/findSymbolDisplayAndIndex";
 export { featSymbolToStore } from "./api/featSymbolToStore";
 export { fetchSymbolListToStore } from "./api/fetchSymbolListToStore";
-export { default as SymbolID } from "./ui/SymbolID";
+export { default as SymbolID } from "./ui/SymbolId";
 export { default as SymbolName } from "./ui/SymbolName";
